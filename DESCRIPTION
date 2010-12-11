@@ -1,0 +1,14 @@
+Package: mzXML
+Type: Package
+Title: parser for mzXML files (mass spectrometry data)
+Version: 0.1
+Date: 2010-08-17
+Author: Bernd Fischer
+Maintainer: Bernd Fischer <bernd.fischer@embl.de>
+Description: R frontend for the ISB random acces parser for mzXML files. The package contains the original code written by the ISB.
+License: Artistic-2.0
+LazyLoad: yes
+Depends: methods, Rcpp (>= 0.8.5), grid
+LinkingTo: Rcpp
+SystemRequirements: GNU make
+Packaged: 2010-12-03 18:08:18 UTC; bfischer

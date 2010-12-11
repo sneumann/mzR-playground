@@ -1,0 +1,85 @@
+%\VignetteIndexEntry{mzXML, Ramp}
+%\VignetteKeywords{mzXML, Ramp}
+%\VignettePackage{mzXML}
+
+\documentclass[10pt,a4paper]{article}
+
+\RequirePackage{amsfonts,amsmath,amstext,amssymb,amscd}
+\usepackage{graphicx}
+\usepackage{verbatim}
+\usepackage{hyperref}
+\usepackage{color}
+\definecolor{darkblue}{rgb}{0.2,0.0,0.4}
+
+\topmargin -1.5cm
+\oddsidemargin -0cm   % read Lamport p.163
+\evensidemargin -0cm  % same as oddsidemargin but for left-hand pages
+\textwidth 17cm
+\textheight 24.5cm
+\parindent0em
+
+\newcommand{\lib}[1]{{\mbox{\normalfont\textsf{#1}}}}
+\newcommand{\file}[1]{{\mbox{\normalfont\textsf{'#1'}}}}
+\newcommand{\R}{{\mbox{\normalfont\textsf{R}}}}
+\newcommand{\Rfunction}[1]{{\mbox{\normalfont\texttt{#1}}}}
+\newcommand{\Robject}[1]{{\mbox{\normalfont\texttt{#1}}}}
+\newcommand{\Rpackage}[1]{{\mbox{\normalfont\textsf{#1}}}}
+\newcommand{\Rclass}[1]{{\mbox{\normalfont\textit{#1}}}}
+\newcommand{\code}[1]{{\mbox{\normalfont\texttt{#1}}}}
+
+\newcommand{\email}[1]{\mbox{\href{mailto:#1}{\textcolor{darkblue}{\normalfont{#1}}}}}
+\newcommand{\web}[2]{\mbox{\href{#2}{\textcolor{darkblue}{\normalfont{#1}}}}}
+
+
+
+\usepackage{Sweave}
+\begin{document}
+
+\title{A Parser for mzXML files}
+
+\author{Bernd Fischer}
+
+\maketitle
+
+\tableofcontents
+
+A short example sequence to read data from an mzXML file. First open the file.
+
+\begin{Schunk}
+\begin{Sinput}
+> library(mzXML)
+> ramp <- rampOpenFile("myfile.mzXML")
+\end{Sinput}
+\end{Schunk}
+
+We can obtain different kind of header information.
+\begin{Schunk}
+\begin{Sinput}
+> ramp$getRunInfo()
+> ramp$getInstrumentInfo()
+> SH <- ramp$getAllScanHeaderInfo()
+> head(SH)
+\end{Sinput}
+\end{Schunk}
+
+Read a single spectrum from the file.
+\begin{Schunk}
+\begin{Sinput}
+> PL <-ramp$getPeakList(1000)
+> PL$peaksCount
+> head(PL$peaks)
+> plot(PL$peaks[,1],PL$peaks[,2], type="h", lwd=3)
+\end{Sinput}
+\end{Schunk}
+
+You should close the file when not needed any more. This will release the memory of cached content.
+\begin{Schunk}
+\begin{Sinput}
+> ramp$close()
+\end{Sinput}
+\end{Schunk}
+
+\end{document}
+
+
+

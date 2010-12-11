@@ -1,0 +1,3 @@
+useDynLib(mzXML)
+exportPattern("^[[:alpha:]]+")
+importClassesFrom( Rcpp, "C++ObjectS3", "C++Object", "C++Class", "Module" )

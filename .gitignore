@@ -1,3 +1,4 @@
 src/mzR.so
 *.o
 *~
+.svn

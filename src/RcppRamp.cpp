@@ -47,7 +47,7 @@ RcppRamp::getFilename (  ) {
   if (ramp != NULL) {
     return filename;
   }
-  printf("Warning: Ramp not yet initialized. Call init to open a file.\n ");
+  //printf("Warning: Ramp not yet initialized. Call init to open a file.\n ");
   return filename;
 }
 
@@ -74,7 +74,7 @@ RcppRamp::getRunInfo (  ) {
     }
     return runInfo;
   }
-  printf("Warning: Ramp not yet initialized. Call init to open a file.\n ");
+  //printf("Warning: Ramp not yet initialized. Call init to open a file.\n ");
   return runInfo;
 }
 
@@ -100,7 +100,7 @@ RcppRamp::getInstrumentInfo ( ) {
     }
     return(instrumentInfo);
   }
-  printf("Warning: Ramp not yet initialized. Call init to open a file.\n ");
+  //printf("Warning: Ramp not yet initialized. Call init to open a file.\n ");
   return instrumentInfo;
 }
 
@@ -143,7 +143,7 @@ RcppRamp::getScanHeaderInfo ( int whichScan  ) {
 			     //			     Rcpp::_["filePosition"]      = data.filePosition
 			     ) ;
   }
-  printf("Warning: Ramp not yet initialized. Call init to open a file.\n ");
+  //printf("Warning: Ramp not yet initialized. Call init to open a file.\n ");
   return Rcpp::List::create( );
 }
 
@@ -237,7 +237,7 @@ RcppRamp::getAllScanHeaderInfo ( ) {
     }
     return(allScanHeaderInfo);
   }
-  printf("Warning: Ramp not yet initialized. Call init to open a file.\n ");
+  //printf("Warning: Ramp not yet initialized. Call init to open a file.\n ");
   return Rcpp::DataFrame::create( );
 }
 
@@ -271,7 +271,7 @@ RcppRamp::getPeakList ( int whichScan ) {
 			      Rcpp::_["peaks"]  = peaks
 			     ) ;
   }
-  printf("Warning: Ramp not yet initialized. Call init to open a file.\n ");
+  //printf("Warning: Ramp not yet initialized. Call init to open a file.\n ");
   return Rcpp::List::create( );
 }
 
@@ -316,7 +316,7 @@ RcppRamp::get3DMap ( std::vector<int> scanNumbers, double whichMzLow, double whi
     }
     return(map3d);
   }
-  printf("Warning: Ramp not yet initialized. Call init to open a file.\n ");
+  //printf("Warning: Ramp not yet initialized. Call init to open a file.\n ");
   return Rcpp::NumericMatrix(0,0);
 }
 
@@ -325,7 +325,7 @@ RcppRamp::getLastScan() const {
   if (ramp != NULL) {
     return ramp->getLastScan();
   }
-  printf("Warning: Ramp not yet initialized. Call init to open a file.\n ");
+  //printf("Warning: Ramp not yet initialized. Call init to open a file.\n ");
   return -1;
 }
 
@@ -334,7 +334,7 @@ RcppRamp::OK (  ) {
   if (ramp != NULL) {
     return ramp->OK();
   }
-  printf("Warning: Ramp not yet initialized. Call init to open a file.\n ");
+  //printf("Warning: Ramp not yet initialized. Call init to open a file.\n ");
   return false;
 }
 

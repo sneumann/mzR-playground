@@ -1,19 +1,33 @@
 test.filenotfound <- function() {
     filename <- "rhabarber.mzData"
-    checkTrue(xcms:::rampOpen(filename) < 0)
+    checkTrue(rampOpenFile(filename) < 0)
+}
+
+test.mzXML <- function() {
+    library(msdata)
+    cdfpath <- system.file("threonine", package = "msdata")
+    file <- list.files(cdfpath, pattern=".mzXML",
+                       full.names=TRUE, recursive = TRUE)
+    ramp <- rampOpenFile(file)
+    ramp$getRunInfo()
+    ramp$close()
+}
+
+test.mzML <- function() {
+    library(msdata)
+    cdfpath <- system.file("microtofq", package = "msdata")
+    file <- list.files(cdfpath, pattern=".mzML", recursive = TRUE)
+    ramp <- rampOpenFile(file)
+    ramp$getRunInfo()
+    ramp$close()
 }
 
 test.mzData <- function() {
-    filename <- system.file('iontrap/extracted.mzData', package = "msdata")
-
-    ##     result <- .C("RampROpen", filename,
-    ##        rampid = integer(1), status = integer(1),
-    ##        PACKAGE = "xcms")
-
-    ##     checkTrue(result[[1]] == filename)
-    ##     checkTrue(result$rampid >= 0)
-    ##     checkEqualsNumeric(result$status, 0)
-
-    ##     xcms:::rampClose(result$rampid)
+    library(msdata)
+    cdfpath <- system.file("microtofq", package = "msdata")
+    file <- list.files(cdfpath, pattern=".mzData", recursive = TRUE)
+    ramp <- rampOpenFile(file)
+    ramp$getRunInfo()
+    ramp$close()
 }
 

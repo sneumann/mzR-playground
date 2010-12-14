@@ -1,6 +1,7 @@
 test.filenotfound <- function() {
     filename <- "rhabarber.mzData"
-    checkTrue(rampOpenFile(filename) < 0)
+    ramp <- rampOpenFile(filename)
+    checkTrue(!ramp$OK())
 }
 
 test.mzXML <- function() {
@@ -16,7 +17,8 @@ test.mzXML <- function() {
 test.mzML <- function() {
     library(msdata)
     cdfpath <- system.file("microtofq", package = "msdata")
-    file <- list.files(cdfpath, pattern=".mzML", recursive = TRUE)
+    file <- list.files(cdfpath, pattern=".mzML",
+                       full.names=TRUE, recursive = TRUE)
     ramp <- rampOpenFile(file)
     ramp$getRunInfo()
     ramp$close()
@@ -25,9 +27,12 @@ test.mzML <- function() {
 test.mzData <- function() {
     library(msdata)
     cdfpath <- system.file("microtofq", package = "msdata")
-    file <- list.files(cdfpath, pattern=".mzData", recursive = TRUE)
+    file <- list.files(cdfpath, pattern=".mzdata",
+                       full.names=TRUE, recursive = TRUE)
     ramp <- rampOpenFile(file)
-    ramp$getRunInfo()
+
+    ## This fails with
+    ## ramp$getRunInfo()
     ramp$close()
 }
 

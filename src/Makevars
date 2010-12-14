@@ -62,16 +62,18 @@ PWIZOBJECTS=\
 ./pwiz/utility/misc/random_access_compressed_ifstream.o \
 ./pwiz/utility/misc/SHA1.o \
 ./pwiz/utility/misc/SHA1Calculator.o \
-./pwiz/utility/misc/sha1calc.o 
+./pwiz/utility/misc/sha1calc.o \
+./random_access_gzFile.o
 
 MZROBJECTS=cramp.o  ramp_base64.o  ramp.o  RcppRamp.o RcppRampModule.o
 
 OBJECTS= $(MZROBJECTS) $(PWIZOBJECTS) 
 
 PWIZ_LDFLAGS=-lpthread 
+PWIZ_CPPFLAGS=-I./boost_aux/ -I. -DHAVE_PWIZ_MZML_LIB
 
 ## Use the R_HOME indirection to support installations of multiple R version
-PKG_CPPFLAGS=-I./boost_aux -I. -D_LARGEFILE_SOURCE $(PWIZ_CPPFLAGS)
+PKG_CPPFLAGS=-D_LARGEFILE_SOURCE $(PWIZ_CPPFLAGS)
 PKG_LIBS = $(shell $(R_HOME)/bin/Rscript -e "Rcpp:::LdFlags()" ) $(PWIZ_LDFLAGS) -lz
 
 

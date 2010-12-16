@@ -1,15 +1,15 @@
 Package: mzR
 Type: Package
 Title: parser for mzXML, mzData and mzML files (mass spectrometry data)
-Version: 0.2
-Date: 2010-12-11
+Version: 0.3
+Date: 2010-12-16
 Author: Bernd Fischer, Steffen Neumann
 Maintainer: Bernd Fischer <bernd.fischer@embl.de>, Steffen Neumann <sneumann@ipb-halle.de>
 SystemRequirements: NetCDF, zlib
 Description: R frontend for the ISB random acces parser for mass spectrometry mzXML, mzData and mzML files. The package contains the original code written by the ISB, and a subset of the proteowizard library for mzML.
 License: Artistic-2.0
 LazyLoad: yes
-Depends: methods, Rcpp (>= 0.8.5), grid
+Depends: methods, Rcpp (>= 0.8.9), grid
 LinkingTo: Rcpp
 SystemRequirements: GNU make
 Packaged: 2010-12-03 18:08:18 UTC; bfischer

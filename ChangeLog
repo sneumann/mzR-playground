@@ -1,0 +1,6 @@
+2010-12-16  Steffen Neumann  <sneumann@ipb-halle.de>
+
+	* push 0.3 which adds mzML support, and has (a few) 
+	unit tests. R CMD check finishes mostly clean, with 
+	some problems with Rcpp/methods
+	

@@ -4,6 +4,7 @@
 RCPP_MODULE(modRamp){
  using namespace Rcpp ;
  class_<RcppRamp>( "Ramp" )
+   .constructor()
    .method( "open", &RcppRamp::open )
    .method( "close", &RcppRamp::close )
    .method( "getFilename", &RcppRamp::getFilename )

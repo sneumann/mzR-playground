@@ -1,6 +1,9 @@
 \name{Ramp-class}
 \alias{Ramp}
+\alias{MS}
 \alias{Ramp-class}
+\alias{rampOpenFile}
+\alias{validityRamp}
 \docType{class}
 \title{A class for handling file input from mzXML-files}
 \description{

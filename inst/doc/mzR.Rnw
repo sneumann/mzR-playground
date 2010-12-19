@@ -1,6 +1,6 @@
-%\VignetteIndexEntry{mzXML, Ramp}
-%\VignetteKeywords{mzXML, Ramp}
-%\VignettePackage{mzXML}
+%\VignetteIndexEntry{mzR, Ramp, mzXML, mzData, mzML}
+%\VignetteKeywords{mzXML, mzData, mzML, Ramp}
+%\VignettePackage{mzR}
 
 \documentclass[10pt,a4paper]{article}
 
@@ -34,23 +34,27 @@
 
 \begin{document}
 
-\title{A Parser for mzXML files}
+\title{A Parser for mzXML, mzData and mzML files}
 
-\author{Bernd Fischer}
+\author{Bernd Fischer, Steffen Neumann}
 
 \maketitle
 
 \tableofcontents
 
-A short example sequence to read data from an mzXML file. First open the file.
+A short example sequence to read data from a mass spectrometer. First open the file.
 
-<<open the file,eval=FALSE>>=
-library(mzXML)
-ramp <- rampOpenFile("myfile.mzXML")
+<<open the file>>=
+library(mzR)
+library(msdata)
+
+mzxml <- system.file("threonine/threonine_i2_e35_pH_tree.mzXML", 
+                     package = "msdata")
+ramp <- rampOpenFile(mzxml)
 @ 
 
 We can obtain different kind of header information.
-<<get header information, eval=FALSE>>=
+<<get header information>>=
 ramp$getRunInfo()
 ramp$getInstrumentInfo()
 SH <- ramp$getAllScanHeaderInfo()
@@ -58,15 +62,15 @@ head(SH)
 @ 
 
 Read a single spectrum from the file.
-<<obtain a spectrum, eval=FALSE>>=
-PL <-ramp$getPeakList(1000)
+<<plotspectrum, fig = TRUE, eps = FALSE>>=
+PL <-ramp$getPeakList(10)
 PL$peaksCount
 head(PL$peaks)
-plot(PL$peaks[,1],PL$peaks[,2], type="h", lwd=3)
+plot(PL$peaks[,1], PL$peaks[,2], type="h", lwd=3)
 @ 
 
 You should close the file when not needed any more. This will release the memory of cached content.
-<<close the file, eval=FALSE>>=
+<<close the file>>=
 ramp$close()
 @ 
 

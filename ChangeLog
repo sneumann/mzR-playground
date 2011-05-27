@@ -1,3 +1,16 @@
+2011-05-27  Laurent Gatto  <lg390@cam.ac.uk>
+	* bumped verssion to 0.4.3
+	* added further refinements and dummy documenation
+
+2011-05-25  Laurent Gatto  <lg390@cam.ac.uk>
+	* bumped verion to 0.4.1
+	* cleaned up code and file names, to fit with 
+	Bioconductor's naming schemes.
+	* created S4 classes and methods 
+	
+2011-05-01  Laurent Gatto  <lg390@cam.ac.uk>
+	* added cleanup script to version 0.4
+
 2010-12-16  Steffen Neumann  <sneumann@ipb-halle.de>
 
 	* push 0.3 which adds mzML support, and has (a few) 

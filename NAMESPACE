@@ -1,6 +1,27 @@
 useDynLib(mzR)
-exportPattern("^[[:alpha:]]+")
 
-importClassesFrom( Rcpp, "C++ObjectS3", "C++Object", "C++Class")
-importFrom(Rcpp, "Module")
+importClassesFrom(Biobase, "Versioned")
+importFrom(Biobase, validMsg)
+
+##exportPattern("^[[:alpha:]]+")
+
+export(openMSfile)
+
+exportMethods(close,
+              isInitialized,
+              initializeRamp,
+              runInfo,
+              fileName,
+              instrumentInfo,
+              manufacturer,
+              model,
+              ionisation,
+              analyzer,
+              detector,
+              header,
+              peaksCount,
+              peaks,
+              get3Dmap)
+
+exportClasses("mzR")
 

@@ -18,7 +18,7 @@
 * For conditions of distribution and use, see copyright notice in zlib.h
 Version 1.0  29 May 2005  Mark Adler */
 
-#include "pwiz/utility/misc/random_access_compressed_ifstream.hpp"
+#include "./pwiz/utility/misc/random_access_compressed_ifstream.hpp"
 
 struct random_access_gzFile;  // internals are a mystery to caller
 typedef pwiz::util::random_access_compressed_ifstream_off_t random_access_gzFile_off_t; // so it looks more gzio-like

@@ -38,15 +38,15 @@ and gzipped versions of all of these if you have pwiz
 #ifdef HAVE_PWIZ_MZML_LIB
 #include <iostream>
 #include <exception>
-#include <pwiz/data/msdata/RAMPAdapter.hpp>
+#include <./pwiz/data/msdata/RAMPAdapter.hpp>
 #ifdef HAVE_PWIZ_RAW_LIB  // use RAMP+pwiz+xcalibur to read .raw
-#include <pwiz/data/vendor_readers/Reader_Thermo.hpp>
+#include <./pwiz/data/vendor_readers/Reader_Thermo.hpp>
 #endif
 #define MZML_TRYBLOCK try {
 #define MZML_CATCHBLOCK } catch (std::exception& e) { std::cout << e.what() << std::endl;  } catch (...) { std::cout << "Caught unknown exception." << std::endl;  }
 #endif
 #ifdef RAMP_HAVE_GZ_INPUT
-#include "pwiz/utility/misc/random_access_compressed_ifstream.hpp"  // for reading mzxml.gz
+#include "./pwiz/utility/misc/random_access_compressed_ifstream.hpp"  // for reading mzxml.gz
 #endif
 #ifdef WINDOWS_NATIVE
 #include "common/wglob.h"		//glob for windows

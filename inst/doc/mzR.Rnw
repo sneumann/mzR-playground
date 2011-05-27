@@ -36,7 +36,7 @@
 
 \title{A Parser for mzXML, mzData and mzML files}
 
-\author{Bernd Fischer, Steffen Neumann}
+\author{Bernd Fischer, Laurent Gatto and Steffen Neumann}
 
 \maketitle
 
@@ -50,28 +50,27 @@ library(msdata)
 
 mzxml <- system.file("threonine/threonine_i2_e35_pH_tree.mzXML", 
                      package = "msdata")
-ramp <- rampOpenFile(mzxml)
+aa <- openMSfile(mzxml)
 @ 
 
 We can obtain different kind of header information.
 <<get header information>>=
-ramp$getRunInfo()
-ramp$getInstrumentInfo()
-SH <- ramp$getAllScanHeaderInfo()
-head(SH)
+runInfo(aa)
+instrumentInfo(aa)
+header(aa,1)
 @ 
 
 Read a single spectrum from the file.
 <<plotspectrum, fig = TRUE, eps = FALSE>>=
-PL <-ramp$getPeakList(10)
-PL$peaksCount
-head(PL$peaks)
-plot(PL$peaks[,1], PL$peaks[,2], type="h", lwd=3)
+pl <- peaks(aa,10)
+peaksCount(aa,10)
+head(pl)
+plot(pl[,1], pl[,2], type="h", lwd=1)
 @ 
 
 You should close the file when not needed any more. This will release the memory of cached content.
 <<close the file>>=
-ramp$close()
+close(aa)
 @ 
 
 \end{document}

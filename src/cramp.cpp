@@ -2,7 +2,7 @@
 cramp.cpp
 
 /***************************************************************************
-cramp.hpp
+cramp.hpp -- renamed cramp.h to avoid R checker warning 
 
   A C++ wrapper for the RAMP code.
 
@@ -37,7 +37,7 @@ cramp.hpp
 #if !defined(_MSC_VER) && !defined(__MINGW32__)
 #include "sys/errno.h"
 #endif
-#include "cramp.hpp"
+#include "cramp.h"
 
 
 /**

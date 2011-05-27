@@ -19,3 +19,4 @@ Suggests: msdata, RUnit, faahKO
 LinkingTo: Rcpp
 RcppModules: Ramp
 SystemRequirements: GNU make
+biocViews: Infrastructure, Bioinformatics, DataImport, Proteomics, MassSpectrometry

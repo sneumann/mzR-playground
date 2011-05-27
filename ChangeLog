@@ -1,6 +1,7 @@
 2011-05-27  Laurent Gatto  <lg390@cam.ac.uk>
 	* bumped verssion to 0.4.3
 	* added further refinements and dummy documenation
+	* builds, checks and installs fine 
 
 2011-05-25  Laurent Gatto  <lg390@cam.ac.uk>
 	* bumped verion to 0.4.1

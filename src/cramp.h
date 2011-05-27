@@ -1,5 +1,5 @@
 /***************************************************************************
-cramp.hpp
+cramp.hpp -- renamed cramp.h to avoid R checker warning 
 
   A C++ wrapper for the RAMP code.
 
@@ -25,9 +25,9 @@ cramp.hpp
 *																								  *
 ***************************************************************************/
 
-
-#ifndef CRAMP_HPP_INCLUDED
-#define CRAMP_HPP_INCLUDED
+// was CRAMP_HPP_INCLUDED
+#ifndef CRAMP_H_INCLUDED 
+#define CRAMP_H_INCLUDED 
 
 #include <iostream>
 #include <string.h>
@@ -326,4 +326,4 @@ class rampInstrumentInfo : public rampInfo {
 };
 // END HENRY 
 
-#endif // ifndef CRAMP_HPP_INCLUDED
+#endif // ifndef CRAMP_H_INCLUDED

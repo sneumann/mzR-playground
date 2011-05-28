@@ -31,7 +31,7 @@ setMethod("peaks",
 setMethod("peaks",
           signature=c("mzR","missing"),
           function(object) {
-            n <- lengh(object)
+            n <- length(object)
             return(peaks(obejct,1:n))
           })
 
@@ -48,7 +48,7 @@ setMethod("peaksCount",
 setMethod("peaksCount",
           signature=c("mzR","missing"),
           function(object) {
-            n <- lengh(object)
+            n <- length(object)
             return(peaksCount(obejct,1:n))
           })
 

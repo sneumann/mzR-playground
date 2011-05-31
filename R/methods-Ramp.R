@@ -84,7 +84,14 @@ setMethod("fileName",
 
 setMethod("instrumentInfo",
           signature="mzR",
-          function(object) return(object@Ramp$getInstrumentInfo()))
+          function(object) {
+            extension <- sub("^.+\\.","",fileName(aa))
+            if (toupper(extension)=="MZDATA") {
+              warning("Instrument info not available for mzdata.")
+              return(NA)
+            }
+            return(object@Ramp$getInstrumentInfo())
+          })
 
 setMethod("manufacturer",
           signature="mzR",
@@ -134,11 +141,13 @@ setMethod("show",
               run <- runInfo(object)
               cat("Mass Spectrometry file handle.\n")
               cat("Filename:     ", filename, "\n")
-              cat("Manufacturer: ", info$manufacturer, "\n")
-              cat("Model:        ", info$model, "\n")
-              cat("Ionisation:   ", info$ionisation, "\n")
-              cat("Analyzer:     ", info$analyzer, "\n")
-              cat("Detector:     ", info$detector, "\n")
+              if (!is.na(info)) {
+                cat("Manufacturer: ", info$manufacturer, "\n")
+                cat("Model:        ", info$model, "\n")
+                cat("Ionisation:   ", info$ionisation, "\n")
+                cat("Analyzer:     ", info$analyzer, "\n")
+                cat("Detector:     ", info$detector, "\n")
+              }
               cat("number scans: ", run$scanCount, "\n")
               cat("lowMZ:        ", run$lowMZ, " \thighMZ: ", run$highMZ, "\n")
               cat("startMZ:      ", run$lowMZ, " \tendMZ: ",  run$highMZ, "\n")

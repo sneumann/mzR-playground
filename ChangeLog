@@ -1,3 +1,10 @@
+2011-05-31  Laurent Gatto <lg390@cam.ac.uk>
+	* file extension is checked to avoid retrieving 
+	instrument info for mzdata files (see 
+	https://github.com/sneumann/mzR/issues/5)
+	* update Rcpp version dependency
+	* updated unit test
+	
 2011-05-27  Laurent Gatto  <lg390@cam.ac.uk>
 	* bumped verssion to 0.4.3
 	* added further refinements and dummy documenation

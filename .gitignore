@@ -2,3 +2,10 @@ src/mzR.so
 *.o
 *~
 .svn
+\#*\#
+.Rhistory
+report.html
+report.txt
+reportSummary.txt
+
+

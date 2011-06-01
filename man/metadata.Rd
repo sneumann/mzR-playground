@@ -20,12 +20,19 @@ manufacturer(object)
 model(object)
 }
 \arguments{
-  \item{object}{an instantiated mzR object.}
+  \item{object}{An instantiated \code{mzR} object.}
 }
+
 \description{
   Obtain the metadata about the analytical setup of a run.
   runInfo() will show a summary, whereas all other functions
   return a single pieve of information. 
+}
+
+
+\seealso{
+  \code{\link{peaks}} for data access and the \code{"\linkS4class{mzR}"}
+  class.
 }
 
 \examples{

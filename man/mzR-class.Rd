@@ -2,6 +2,7 @@
 \Rdversion{1.1}
 \docType{class}
 \alias{mzR-class}
+\alias{class:mzR}
 \alias{analyzer,mzR-method}
 \alias{close,mzR-method}
 \alias{detector,mzR-method}
@@ -37,7 +38,9 @@
 \section{Slots}{
   \describe{
     \item{\code{Ramp}:}{Object of class \code{"C++Object"}, created with
-    Rcpp.}
+      Rcpp.}
+    \item{\code{fileName}:}{Object of class \code{character} storing the
+      original filename used when the instance was created. }
     \item{\code{.__classVersion__}:}{Object of class \code{"Versioned"},
       from Biobase.}
   }

@@ -3,6 +3,7 @@
 %\VignettePackage{mzR}
 
 \documentclass[10pt,a4paper]{article}
+\usepackage[authoryear,round]{natbib}
 
 \RequirePackage{amsfonts,amsmath,amstext,amssymb,amscd}
 \usepackage{graphicx}
@@ -11,12 +12,12 @@
 \usepackage{color}
 \definecolor{darkblue}{rgb}{0.2,0.0,0.4}
 
-\topmargin -1.5cm
-\oddsidemargin -0cm   % read Lamport p.163
-\evensidemargin -0cm  % same as oddsidemargin but for left-hand pages
-\textwidth 17cm
-\textheight 24.5cm
-\parindent0em
+%% \topmargin -1.5cm
+%% \oddsidemargin -0cm   % read Lamport p.163
+%% \evensidemargin -0cm  % same as oddsidemargin but for left-hand pages
+%% \textwidth 17cm
+%% \textheight 24.5cm
+%% \parindent0em
 
 \newcommand{\lib}[1]{{\mbox{\normalfont\textsf{#1}}}}
 \newcommand{\file}[1]{{\mbox{\normalfont\textsf{'#1'}}}}
@@ -44,10 +45,19 @@
 
 \section{Introduction}
 
+The \Rpackage{mzR} package aims at providing a common interface to several mass spectrometry data formats: 
+\texttt{mzData} \citep{Orchard2007}, 
+\texttt{mzXML} \citep{Pedrioli2004} and the latest 
+\texttt{mzML} \citep{Martens2010}. 
+
+Most importantly, access to the data should be fast and memory efficient. This is made possible by 
+allowing random file access, i.e. retrieving specific data of interest without having to sequentially browser 
+the full content. 
+
+
 \begin{itemize}
   \item Proteowizard and Ramp, fast random access
   \item Rcpp 
-  \item The \Rpackage{mzR} package
 \end{itemize}
 
 
@@ -98,6 +108,8 @@ close(aa)
 @ 
 
 
+\bibliographystyle{plainnat}
+\bibliography{mzR}
 
 \end{document}
 

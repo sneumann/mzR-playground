@@ -1,3 +1,12 @@
+2011-06-01  Laurent Gatto <lg390@cam.ac.uk>
+	* added fileName slot to mzR class (now version 0.1.3)
+	* updated openMSfile, fileName and mzR validity to 
+	reflect new mzR@fileName slot.
+	* update get3Dmap and initializeRamp generics - added 
+	explicit non-dispatching elements.
+	* added mzR.bib bibtex and Makefile files
+	* updated docs and vignette
+
 2011-06-01  Steffen Neumann <sneumann@ipb-halle.de>
 	* fix call to fileName() in instrumentInfo()
 	* added Makefile for a simple "make" in unitTests

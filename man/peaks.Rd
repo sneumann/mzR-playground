@@ -5,8 +5,9 @@
 \alias{get3Dmap}
 
 \title{
-  Access the raw data from an mzR object.
+  Access the raw data from an \code{mzR} object.
 }
+
 \usage{
  header(object, scans, ...)
 
@@ -14,26 +15,34 @@
 
  peaks(object, scans, ...)
 
- get3Dmap(object, scans, lowMz, highMz, resMz)
-
+ get3Dmap(object, scans, lowMz, highMz, resMz, ...)
 }
+
 \arguments{
-  \item{object}{an instantiated mzR object.}
-  \item{scans}{specify restriction to one or more scans.}
-  \item{lowMz, highMz}{Range.}
-  \item{resMz}{Resolution.}
-  \item{...}{All other arguments are passed on to XXX.}
+  \item{object}{An instantiated \code{mzR} object.}
+  \item{scans}{A \code{numeric} specifying which scans to
+    return. Optional for the \code{header}, \code{peaks} and
+    \code{peaksCount} methods. If ommited, the requested data for all
+    peaks is returned. } 
+  \item{lowMz, highMz}{\code{Numeric}s defining the m/z range to be returned.}
+  \item{resMz}{a \code{numeric} defining the m/z resolution.}
+  \item{...}{Other arguments. Currently ignored.}
 }
-\description{
-  
-  Access the MS raw data. The \code{runInfo()} returns a list of with
-  scanCount, lowMZ and highMZ, startMZ and endMZ and the dStartTime
-  and dEndTime.
-  
-  Each scan has a header, which contains
-  for each scan the metadata.
 
-  A simple resampling is performed by the function get3Dmap().  
+\description{
+  Access the MS raw data. The \code{\link{runInfo}} function returns a
+  list of with \code{scanCount}, \code{lowMZ} and \code{highMZ},
+  \code{startMZ} and \code{endMZ} and the \code{dStartTime} and
+  \code{dEndTime}. 
+  
+  Each scan has a header, which contains for each scan the metadata.
+
+  A simple resampling is performed by the function \code{get3Dmap()}. 
+}
+
+\seealso{
+  \code{\link{instrumentInfo}} for metadata access and the
+  \code{"\linkS4class{mzR}"} class.
 }
 
 \examples{

@@ -9,5 +9,7 @@ openMSfile <- function(filename, declaredOnly = FALSE, verbose = FALSE) {
   }
   if (verbose) 
     cat(filename," opened successfully and cRamp object created successfully.\n")
-  return(new("mzR",Ramp=rampmodule))
+  return(new("mzR",
+             Ramp=rampmodule,
+             fileName=filename))
 }

@@ -78,10 +78,15 @@ setMethod("runInfo",
           signature="mzR",
           function(object) return(object@Ramp$getRunInfo()))
 
-#setGeneric("fileName", function(object) standardGeneric("fileName"))
+## Added fileName slot in mzR version 0.1.3 - using
+## that one in accessor method
 setMethod("fileName",
           signature="mzR",
-          function(object) return(object@Ramp$getFilename()))
+          function(object) return(object@fileName))
+## setMethod("fileName",
+##           signature="mzR",
+##           function(object) return(object@Ramp$getFilename()))
+## Added fileName slot in mzR version 0.1.3 - using
 
 setMethod("instrumentInfo",
           signature="mzR",

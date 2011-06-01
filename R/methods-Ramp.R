@@ -17,7 +17,7 @@ setMethod("length",
           signature=c("mzR"),
           function(x) return(x@Ramp$getLastScan()))
 
-
+#setGeneric("peaks", function(object, scans) standardGeneric("peaks"))
 setMethod("peaks",
           signature=c("mzR","numeric"),
           function(object,scans) {
@@ -78,6 +78,7 @@ setMethod("runInfo",
           signature="mzR",
           function(object) return(object@Ramp$getRunInfo()))
 
+#setGeneric("fileName", function(object) standardGeneric("fileName"))
 setMethod("fileName",
           signature="mzR",
           function(object) return(object@Ramp$getFilename()))
@@ -85,7 +86,7 @@ setMethod("fileName",
 setMethod("instrumentInfo",
           signature="mzR",
           function(object) {
-            extension <- sub("^.+\\.","",fileName(aa))
+            extension <- sub("^.+\\.","",fileName(object))
             if (toupper(extension)=="MZDATA") {
               warning("Instrument info not available for mzdata.")
               return(NA)

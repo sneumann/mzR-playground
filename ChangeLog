@@ -1,3 +1,7 @@
+2011-06-01  Steffen Neumann <sneumann@ipb-halle.de>
+	* fix call to fileName() in instrumentInfo()
+	* added Makefile for a simple "make" in unitTests
+	
 2011-05-31  Laurent Gatto <lg390@cam.ac.uk>
 	* file extension is checked to avoid retrieving 
 	instrument info for mzdata files (see 

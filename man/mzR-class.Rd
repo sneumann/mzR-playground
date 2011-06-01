@@ -30,21 +30,22 @@
   raw data, such as the peaks.
 }
 \section{Objects from the Class}{
-Objects can be created by calls of the form \code{new("mzR", versions,
-  ...)}, but more often they will be created with \code{openMSfile}.
+  Objects can be created by calls of the form \code{new("mzR", versions,
+    ...)}, but more often they will be created with \code{openMSfile}.
 }
 
 \section{Slots}{
   \describe{
     \item{\code{Ramp}:}{Object of class \code{"C++Object"}, created with
     Rcpp.}
-    \item{\code{.__classVersion__}:}{Object of class \code{"Versions"},
+    \item{\code{.__classVersion__}:}{Object of class \code{"Versioned"},
       from Biobase.}
   }
 }
 \section{Extends}{
-Class \code{"\linkS4class{Versioned}"}, directly.
+  Class \code{"\linkS4class{Versioned}"}, directly.
 }
+
 \section{Methods}{
   \describe{
     \item{analyzer}{\code{signature(object = "mzR")}: ... }
@@ -66,12 +67,14 @@ Class \code{"\linkS4class{Versioned}"}, directly.
     \item{peaks}{\code{signature(object = "mzR", scans = "missing")}: ... }
     \item{peaks}{\code{signature(object = "mzR", scans = "numeric")}: ... }
     \item{runInfo}{\code{signature(object = "mzR")}: ... }
-	 }
+  }
 }
+
 \references{
   RAMP: http://tools.proteomecenter.org/wiki/index.php?title=Software:RAMP
   Proteowizard: http://proteowizard.sourceforge.net/
 }
+
 \author{
   Steffen Neumann
 }
@@ -79,4 +82,5 @@ Class \code{"\linkS4class{Versioned}"}, directly.
 \examples{
 showClass("mzR")
 }
+
 \keyword{classes}

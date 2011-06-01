@@ -1,5 +1,5 @@
 %\VignetteIndexEntry{mzR, Ramp, mzXML, mzData, mzML}
-%\VignetteKeywords{mzXML, mzData, mzML, Ramp}
+%\VignetteKeywords{mzXML, mzData, mzML, Ramp, mass spectrometry, proteomics, metabolomics}
 %\VignettePackage{mzR}
 
 \documentclass[10pt,a4paper]{article}
@@ -42,6 +42,17 @@
 
 \tableofcontents
 
+\section{Introduction}
+
+\begin{itemize}
+  \item Proteowizard and Ramp, fast random access
+  \item Rcpp 
+  \item The \Rpackage{mzR} package
+\end{itemize}
+
+
+\section{Example}
+
 A short example sequence to read data from a mass spectrometer. First open the file.
 
 <<open the file>>=
@@ -72,6 +83,21 @@ You should close the file when not needed any more. This will release the memory
 <<close the file>>=
 close(aa)
 @ 
+
+\section{Future plans}
+
+\begin{itemize}
+\item pwiz's metadata
+\item mzIdentML
+\end{itemize}
+
+\section{Session information}\label{sec:sessionInfo} 
+
+<<<label=sessioninfo,results=tex,echo=FALSE,cache=FALSE>>=
+  toLatex(sessionInfo())
+@ 
+
+
 
 \end{document}
 

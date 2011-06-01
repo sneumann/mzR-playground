@@ -1,55 +1,49 @@
 \name{openMSfile}
 \alias{openMSfile}
-\alias{close,mzR-method}
-\alias{isInitialized,mzR-method}
-\alias{isInitialized}
-\alias{initializeRamp,mzR-method}
 \alias{initializeRamp}
-\alias{runInfo,mzR-method}
-\alias{runInfo}
-\alias{fileName,mzR-method}
+\alias{isInitialized}
 \alias{fileName}
-\alias{manufacturer,mzR-method}
-\alias{manufacturer}
-\alias{model,mzR-method}
-\alias{model}
-\alias{ionisation,mzR-method}
-\alias{ionisation}
-\alias{analyzer,mzR-method}
-\alias{analyzer}
-\alias{detector,mzR-method}
-\alias{detector}
-\alias{header,mzR,missing-method}
-\alias{header,mzR,numeric-method}
-\alias{header}
-\alias{mzR-class}
-\alias{instrumentInfo,mzR-method}
-\alias{instrumentInfo}
-\alias{peaks,mzR,missing-method}
-\alias{peaks,mzR,numeric-method}
-\alias{peaks}
-\alias{peaksCount,mzR,missing-method}
-\alias{peaksCount,mzR,numeric-method}
-\alias{peaksCount}
-\alias{length,mzR-method}
-\alias{length}
-\alias{get3Dmap,mzR-method}
-\alias{get3Dmap}
 
 \title{
-  No documentation yet
+  Create and check mzR objects from an mzXML, mzData or mzML file.
 }
+\usage{
+ openMSfile(filename, declaredOnly = FALSE, verbose = FALSE)
 
-\description{
-  Temporary dummy documentation files.
+ initializeRamp(object, filename, declaredOnly = FALSE)
+
+ isInitialized(object)
+
+ fileName(object)
+
 }
+\arguments{
+  \item{filename}{path name of the mzData, mzXML or mzML file to read}
+  \item{declaredOnly}{suppress RAMP's behavior of creating sparse
+    tables to accomodate unlisted scans.}  
+  \item{object}{an instantiated mzR object.}
+  \item{verbose}{Enable informational output.}
+}
+\description{
+  The openMSfile() constructor will create a new mzR object, open the
+  given file and all header information is loaded into the RAMP slot of
+  the mzR object.
+
+  If the object was created manually with e.g. new("mzR"), then
+  initializeRamp() will open the given file. An mzR object can be
+  queried, whether it is assigned to a raw file with isInitialized(),
+  and finally fileName(object) will return the path to the file "behind"
+  the mzR object.  }
 
 \examples{
  library(msdata)
- cdfpath <- system.file("microtofq", package = "msdata")
- file <- list.files(cdfpath, pattern="MM14.mzML",
+ filepath <- system.file("microtofq", package = "msdata")
+ file <- list.files(filepath, pattern="MM14.mzML",
                     full.names=TRUE, recursive = TRUE)
-  aa <- openMSfile(file)
-  runInfo(aa)
-  ## close(aa)
+  mz <- openMSfile(file)
+  fileName(mz)
+  isInitialized(mz)
+  runInfo(mz)
+  
+  close(mz)
 }

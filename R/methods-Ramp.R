@@ -147,7 +147,7 @@ setMethod("show",
               run <- runInfo(object)
               cat("Mass Spectrometry file handle.\n")
               cat("Filename:     ", filename, "\n")
-              if (!is.na(info)) {
+              if (!any(is.na(info))) {
                 cat("Manufacturer: ", info$manufacturer, "\n")
                 cat("Model:        ", info$model, "\n")
                 cat("Ionisation:   ", info$ionisation, "\n")

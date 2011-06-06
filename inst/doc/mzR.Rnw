@@ -103,7 +103,7 @@ close(aa)
 
 \section{Session information}\label{sec:sessionInfo} 
 
-<<<label=sessioninfo,results=tex,echo=FALSE,cache=FALSE>>=
+<<label=sessioninfo,results=tex,echo=FALSE,cache=FALSE>>=
   toLatex(sessionInfo())
 @ 
 

@@ -24,8 +24,8 @@ model(object)
 }
 
 \description{
-  Obtain the metadata about the analytical setup of a run.
-  runInfo() will show a summary, whereas all other functions
+  Accessors to the analytical setup metadata of a run.
+  \code{runInfo} will show a summary, whereas all other functions
   return a single pieve of information. 
 }
 
@@ -43,6 +43,5 @@ model(object)
   mz <- openMSfile(file)
   fileName(mz)
   runInfo(mz)
-  
   close(mz)
 }

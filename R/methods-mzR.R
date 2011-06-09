@@ -1,30 +1,35 @@
+##################################################
+## methods common to all format-specific classes,
+## directly inherited from the mzR class
+
+## Instrument info methods defined at the sub-class level
+
 setMethod("get3Dmap",
           signature="mzR",
           function(object,scans,lowMz,highMz,resMz) 
-          return(object@Ramp$get3DMap(scans,lowMz,highMz,resMz)))
+          return(object@ramp$get3DMap(scans,lowMz,highMz,resMz)))
 
 setMethod("initializeRamp",
           signature="mzR",
           function(object,filename,declaredOnly=FALSE) {
             if (!file.exists(filename))
               stop("File ",filename," not found.\n")
-            object@Ramp$open(filename, declaredOnly = declaredOnly)
+            object@ramp$open(filename, declaredOnly = declaredOnly)
             if (isInitialized(object)) invisible(TRUE)
-            else stop("Could not initialize Ramp slot.")
+            else stop("Could not initialize ramp slot.")
           })
 
 setMethod("length",
           signature=c("mzR"),
-          function(x) return(x@Ramp$getLastScan()))
+          function(x) return(x@ramp$getLastScan()))
 
-#setGeneric("peaks", function(object, scans) standardGeneric("peaks"))
 setMethod("peaks",
           signature=c("mzR","numeric"),
           function(object,scans) {
             if (length(scans)==1) {
-              return(object@Ramp$getPeakList(scans)$peaks)
+              return(object@ramp$getPeakList(scans)$peaks)
             } else {
-              return(sapply(scans,function(x) object@Ramp$getPeakList(x)$peaks))
+              return(sapply(scans,function(x) object@ramp$getPeakList(x)$peaks))
             }
           })
 
@@ -39,9 +44,9 @@ setMethod("peaksCount",
           signature=c("mzR","numeric"),
           function(object,scans) {
             if (length(scans)==1) {
-              return(object@Ramp$getPeakList(scans)$peaksCount)
+              return(object@ramp$getPeakList(scans)$peaksCount)
             } else {
-              return(sapply(scans,function(x) object@Ramp$getPeakList(x)$peaksCount))
+              return(sapply(scans,function(x) object@ramp$getPeakList(x)$peaksCount))
             }
           })
 
@@ -54,29 +59,29 @@ setMethod("peaksCount",
 
 setMethod("header",
           signature=c("mzR","missing"),
-          function(object) return(object@Ramp$getAllScanHeaderInfo()))
+          function(object) return(object@ramp$getAllScanHeaderInfo()))
 
 setMethod("header",
           signature=c("mzR","numeric"),
           function(object, scans) {
             if (length(scans)==1) {
-              return(object@Ramp$getScanHeaderInfo(scans))
+              return(object@ramp$getScanHeaderInfo(scans))
             } else {
-              return(data.frame(t(sapply(scans,function(x) object@Ramp$getScanHeaderInfo(x)))))
+              return(data.frame(t(sapply(scans,function(x) object@ramp$getScanHeaderInfo(x)))))
             }
           })
 
 setMethod("close", 
           signature="mzR",
-          function(con,...) return(con@Ramp$close()))
+          function(con,...) return(con@ramp$close()))
 
 setMethod("isInitialized", 
           signature="mzR",
-          function(object) return(object@Ramp$OK()))
+          function(object) return(object@ramp$OK()))
 
 setMethod("runInfo",
           signature="mzR",
-          function(object) return(object@Ramp$getRunInfo()))
+          function(object) return(object@ramp$getRunInfo()))
 
 ## Added fileName slot in mzR version 0.1.3 - using
 ## that one in accessor method
@@ -85,61 +90,15 @@ setMethod("fileName",
           function(object) return(object@fileName))
 ## setMethod("fileName",
 ##           signature="mzR",
-##           function(object) return(object@Ramp$getFilename()))
+##           function(object) return(object@ramp$getFilename()))
 ## Added fileName slot in mzR version 0.1.3 - using
-
-setMethod("instrumentInfo",
-          signature="mzR",
-          function(object) {
-            extension <- sub("^.+\\.","",fileName(object))
-            if (toupper(extension)=="MZDATA") {
-              warning("Instrument info not available for mzdata.")
-              return(NA)
-            }
-            return(object@Ramp$getInstrumentInfo())
-          })
-
-setMethod("manufacturer",
-          signature="mzR",
-          function(object) {
-            info <- instrumentInfo(object)           
-            return(info$manufacturer)
-          })
-
-setMethod("model",
-          signature="mzR",
-          function(object) {
-            info <- instrumentInfo(object)           
-            return(info$model)
-          })
-
-setMethod("ionisation",
-          signature="mzR",
-          function(object) {
-            info <- instrumentInfo(object)           
-            return(info$ionisation)
-          })
-
-setMethod("analyzer",
-          signature="mzR",
-          function(object) {
-            info <- instrumentInfo(object)           
-            return(info$analyzer)
-          })
-
-setMethod("detector",
-          signature="mzR",
-          function(object) {
-            info <- instrumentInfo(object)           
-            return(info$detector)
-          })
 
 
 setMethod("show",
           signature="mzR",
           function(object) {
             if (!isInitialized(object)) {
-              cat("Your object's Ramp slot is not initialized.\n")
+              cat("Your object's ramp slot is not initialized.\n")
               cat("Use initializeRamp(object,filename) to fix this.\n")
             } else {
               filename <- fileName(object)
@@ -159,6 +118,6 @@ setMethod("show",
               cat("startMZ:      ", run$lowMZ, " \tendMZ: ",  run$highMZ, "\n")
               cat("dStartTime:   ", run$dStartTime, " \tdEndTime: ", run$dEndTime, "\n")
             }
+            invisible(NULL)
           })
-
 

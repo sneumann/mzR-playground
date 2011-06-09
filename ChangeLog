@@ -1,3 +1,9 @@
+2011-06-09  Laurent Gatto  <lg390@cam.ac.uk>
+	* bumped version to 0.4.4
+	* created format specific classes and methods
+	* added (optional) format argument to openMSfile
+	* updated documentation
+	
 2011-06-01  Laurent Gatto <lg390@cam.ac.uk>
 	* added fileName slot to mzR class (now version 0.1.3)
 	* updated openMSfile, fileName and mzR validity to 

@@ -2,34 +2,56 @@
 \Rdversion{1.1}
 \docType{class}
 \alias{mzR-class}
+\alias{mzRData-class}
+\alias{mzRML-class}
+\alias{mzRXML-class}
 \alias{class:mzR}
-\alias{analyzer,mzR-method}
+\alias{class:mzRData}
+\alias{class:mzRML}
+\alias{class:mzRXML}
 \alias{close,mzR-method}
-\alias{detector,mzR-method}
+\alias{close}
+\alias{analyzer,mzRML-method}
+\alias{analyzer,mzRXML-method}
+\alias{detector,mzRXML-method}
+\alias{detector,mzRML-method}
 \alias{fileName,mzR-method}
 \alias{get3Dmap,mzR-method}
 \alias{header,mzR,missing-method}
 \alias{header,mzR,numeric-method}
 \alias{initializeRamp,mzR-method}
 \alias{instrumentInfo,mzR-method}
-\alias{ionisation,mzR-method}
+\alias{instrumentInfo,mzRML-method}
+\alias{instrumentInfo,mzRXML-method}
+\alias{ionisation,mzRML-method}
+\alias{ionisation,mzRXML-method}
 \alias{isInitialized,mzR-method}
 \alias{length,mzR-method}
-\alias{manufacturer,mzR-method}
-\alias{model,mzR-method}
+\alias{length}
+\alias{manufacturer,mzRXML-method}
+\alias{manufacturer,mzRML-method}
+\alias{model,mzRXML-method}
+\alias{model,mzRML-method}
 \alias{peaksCount,mzR,missing-method}
 \alias{peaksCount,mzR,numeric-method}
 \alias{peaks,mzR,missing-method}
 \alias{peaks,mzR,numeric-method}
 \alias{runInfo,mzR-method}
 
-\title{Class \code{"mzR"}}
+\title{Class \code{"mzR"} and sub-classes}
 \description{
   The class mzR is a wrapper for the ISB random acces parser RAMP.
   It keeps both the metadata for the run (like fileName, instrument
   description or ionisation). It also provides access to the actual MS
   raw data, such as the peaks.
+
+  \code{"mzRData"}, \code{"mzRXML"}, \code{"mzRXML"} are format specific
+  sub-classes that extend \code{"mzR"}. Currently, they do not add new
+  splots. Although the API is kept consistent across the sub-classes,
+  some accessor methods are defined specifically for some of them and
+  other methods have sub-class specific implementations.
 }
+
 \section{Objects from the Class}{
   Objects can be created by calls of the form \code{new("mzR", versions,
     ...)}, but more often they will be created with \code{openMSfile}.
@@ -37,8 +59,10 @@
 
 \section{Slots}{
   \describe{
-    \item{\code{Ramp}:}{Object of class \code{"C++Object"}, created with
+    \item{\code{ramp}:}{Object of class \code{"C++Object"}, created with
       Rcpp.}
+    \item{\code{pwiz}:}{Currently \code{NULL}. Future usage of the
+      proteowizard API will be done through this slot.}
     \item{\code{fileName}:}{Object of class \code{character} storing the
       original filename used when the instance was created. }
     \item{\code{.__classVersion__}:}{Object of class \code{"Versioned"},
@@ -79,11 +103,15 @@
 }
 
 \author{
-  Steffen Neumann
+  Steffen Neumann and Laurent Gatto
 }
 
 \examples{
-showClass("mzR")
+ library(msdata)
+ filepath <- system.file("microtofq", package = "msdata")
+ file <- list.files(filepath, pattern="MM14.mzML",
+                    full.names=TRUE, recursive = TRUE)
+  mzml <- openMSfile(file)
 }
 
 \keyword{classes}

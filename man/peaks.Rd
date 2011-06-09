@@ -31,13 +31,13 @@
 
 \description{
   Access the MS raw data. The \code{\link{runInfo}} function returns a
-  list of with \code{scanCount}, \code{lowMZ} and \code{highMZ},
+  list containing \code{scanCount}, \code{lowMZ} and \code{highMZ}, 
   \code{startMZ} and \code{endMZ} and the \code{dStartTime} and
   \code{dEndTime}. 
   
-  Each scan has a header, which contains for each scan the metadata.
+  Each scan has a header, which contains for scan-specific metadata.
 
-  A simple resampling is performed by the function \code{get3Dmap()}. 
+  A simple resampling is performed by the function \code{get3Dmap}. 
 }
 
 \seealso{
@@ -45,15 +45,18 @@
   \code{"\linkS4class{mzR}"} class.
 }
 
+\author{
+  Steffen Neumann and Laurent Gatto
+}
+
+
 \examples{
  library(msdata)
  filepath <- system.file("microtofq", package = "msdata")
  file <- list.files(filepath, pattern="MM14.mzML",
                     full.names=TRUE, recursive = TRUE)
   mz <- openMSfile(file)
-
   runInfo(mz)
   colnames(header(mz))
-  
   close(mz)
 }

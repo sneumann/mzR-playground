@@ -14,6 +14,10 @@ LATEXFILES = *.aux\
         *.map\
         *.out\
 
+all:
+	make vignette
+	make clean
+
 setvars:
 ifeq (${R_HOME},)
 R_HOME= $(shell R RHOME)

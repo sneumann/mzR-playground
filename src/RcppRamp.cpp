@@ -85,10 +85,12 @@ Rcpp::List
 RcppRamp::getInstrumentInfo ( ) {
   if (ramp != NULL) {
     if (!isInCacheInstrumentInfo) {
-      // printf("Read from disk.\n ");
-      rampInstrumentInfo *info = ramp->getInstrumentInfo();
+      printf("Read from disk.\n ");
+      rampInstrumentInfo *info = ramp->getInstrumentInfo(); // NULL for mzData
+
+      if (info != NULL) { 
       InstrumentStruct * data = info->m_instrumentStructPtr;
-      Rcpp::List res;
+      
       instrumentInfo = Rcpp::List::create(
 					  Rcpp::_["manufacturer"]  = std::string(data->manufacturer),
 					  Rcpp::_["model"]         = std::string(data->model),
@@ -96,10 +98,19 @@ RcppRamp::getInstrumentInfo ( ) {
 					  Rcpp::_["analyzer"]      = std::string(data->analyzer),
 					  Rcpp::_["detector"]      = std::string(data->detector)
 					  ) ;
-      delete info;
+      delete info; 
+      } else {
+      instrumentInfo = Rcpp::List::create(
+					  Rcpp::_["manufacturer"]  = "",
+					  Rcpp::_["model"]         = "",
+					  Rcpp::_["ionisation"]    = "",
+					  Rcpp::_["analyzer"]      = "",
+					  Rcpp::_["detector"]      = ""
+					  ) ;
+      }
       isInCacheInstrumentInfo = TRUE;
     } else {
-      // printf("Read from cache.\n ");
+      printf("Read from cache.\n ");
     }
     return(instrumentInfo);
   }

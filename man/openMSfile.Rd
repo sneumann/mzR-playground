@@ -8,9 +8,9 @@
   Create and check mzR objects from an mzXML, mzData or mzML file.
 }
 \usage{
- openMSfile(filename, format=NULL, declaredOnly = FALSE, verbose = FALSE)
+ openMSfile(filename, format=NULL, declaredOnly = TRUE, verbose = FALSE)
 
- initializeRamp(object, filename, declaredOnly = FALSE)
+ initializeRamp(object, filename, declaredOnly = TRUE)
 
  isInitialized(object)
 

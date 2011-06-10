@@ -11,7 +11,7 @@ setMethod("get3Dmap",
 
 setMethod("initializeRamp",
           signature="mzR",
-          function(object,filename,declaredOnly=FALSE) {
+          function(object,filename,declaredOnly = TRUE) {
             if (!file.exists(filename))
               stop("File ",filename," not found.\n")
             object@ramp$open(filename, declaredOnly = declaredOnly)

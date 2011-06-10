@@ -1,7 +1,7 @@
 
 openMSfile <- function(filename,
                        format=NULL,
-                       declaredOnly = FALSE,
+                       declaredOnly = TRUE,
                        verbose = FALSE) {
   if (!file.exists(filename))
     stop("File ",filename," not found.\n")

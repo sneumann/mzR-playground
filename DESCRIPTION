@@ -6,10 +6,13 @@ Author: Bernd Fischer, Steffen Neumann, Laurent Gatto
 Maintainer: Bernd Fischer <bernd.fischer@embl.de>, 
 	    Steffen Neumann <sneumann@ipb-halle.de>,
 	    Laurent Gatto <lg390@cam.ac.uk>
-Description: R frontend for the ISB random acces parser for mass 
+Description: mzR provides a unified API to the common file formats 
+	     and parsers available for mass spectrometry data. 
+	     It comes with a wrapper for the ISB random acces parser for mass 
 	     spectrometry mzXML, mzData and mzML files. The package 
 	     contains the original code written by the ISB, and a 
-	     subset of the proteowizard library for mzML.
+	     subset of the proteowizard library for mzML. The netCDF reading 
+	     code has previously been used in XCMS.
 License: Artistic-2.0
 LazyLoad: yes
 Depends: methods, Rcpp (>= 0.9.4)
@@ -18,4 +21,4 @@ Suggests: msdata, RUnit, faahKO
 LinkingTo: Rcpp
 RcppModules: Ramp
 SystemRequirements: GNU make, NetCDF, zlib
-biocViews: Infrastructure, Bioinformatics, DataImport, Proteomics, MassSpectrometry
+biocViews: Infrastructure, Bioinformatics, DataImport, Proteomics, Metabolomics, MassSpectrometry

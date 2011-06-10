@@ -102,21 +102,10 @@ setMethod("show",
               cat("Use initializeRamp(object,filename) to fix this.\n")
             } else {
               filename <- fileName(object)
-              info <- instrumentInfo(object)
               run <- runInfo(object)
               cat("Mass Spectrometry file handle.\n")
               cat("Filename:     ", filename, "\n")
-              if (!any(is.na(info))) {
-                cat("Manufacturer: ", info$manufacturer, "\n")
-                cat("Model:        ", info$model, "\n")
-                cat("Ionisation:   ", info$ionisation, "\n")
-                cat("Analyzer:     ", info$analyzer, "\n")
-                cat("Detector:     ", info$detector, "\n")
-              }
               cat("number scans: ", run$scanCount, "\n")
-              cat("lowMZ:        ", run$lowMZ, " \thighMZ: ", run$highMZ, "\n")
-              cat("startMZ:      ", run$lowMZ, " \tendMZ: ",  run$highMZ, "\n")
-              cat("dStartTime:   ", run$dStartTime, " \tdEndTime: ", run$dEndTime, "\n")
             }
             invisible(NULL)
           })

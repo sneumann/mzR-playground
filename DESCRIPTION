@@ -1,7 +1,7 @@
 Package: mzR
 Type: Package
 Title: parser for mzXML, mzData and mzML files (mass spectrometry data)
-Version: 0.4.4
+Version: 0.5.0
 Author: Bernd Fischer, Steffen Neumann, Laurent Gatto
 Maintainer: Bernd Fischer <bernd.fischer@embl.de>, 
 	    Steffen Neumann <sneumann@ipb-halle.de>,
@@ -15,8 +15,8 @@ Description: mzR provides a unified API to the common file formats
 	     code has previously been used in XCMS.
 License: Artistic-2.0
 LazyLoad: yes
-Depends: methods
-Imports: Biobase, Rcpp (>= 0.9.4)
+Depends: methods, Rcpp (>= 0.9.4)
+Imports: Biobase
 Suggests: msdata, RUnit, faahKO
 LinkingTo: Rcpp
 RcppModules: Ramp

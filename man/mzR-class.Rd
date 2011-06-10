@@ -2,69 +2,62 @@
 \Rdversion{1.1}
 \docType{class}
 \alias{mzR-class}
-\alias{mzRData-class}
-\alias{mzRML-class}
-\alias{mzRXML-class}
+\alias{mzRramp-class}
 \alias{class:mzR}
-\alias{class:mzRData}
-\alias{class:mzRML}
-\alias{class:mzRXML}
-\alias{close,mzR-method}
+\alias{class:mzRramp}
+
+\alias{close,mzRramp-method}
 \alias{close}
-\alias{analyzer,mzRML-method}
-\alias{analyzer,mzRXML-method}
-\alias{detector,mzRXML-method}
-\alias{detector,mzRML-method}
+\alias{analyzer,mzRramp-method}
+\alias{detector,mzRramp-method}
 \alias{fileName,mzR-method}
-\alias{get3Dmap,mzR-method}
-\alias{header,mzR,missing-method}
-\alias{header,mzR,numeric-method}
-\alias{initializeRamp,mzR-method}
-\alias{instrumentInfo,mzR-method}
-\alias{instrumentInfo,mzRML-method}
-\alias{instrumentInfo,mzRXML-method}
-\alias{ionisation,mzRML-method}
-\alias{ionisation,mzRXML-method}
-\alias{isInitialized,mzR-method}
-\alias{length,mzR-method}
+\alias{get3Dmap,mzRramp-method}
+\alias{header,mzRramp,missing-method}
+\alias{header,mzRramp,numeric-method}
+\alias{initializeRamp,mzRramp-method}
+\alias{instrumentInfo,mzRramp-method}
+\alias{ionisation,mzRramp-method}
+\alias{isInitialized,mzRramp-method}
+\alias{length,mzRramp-method}
 \alias{length}
-\alias{manufacturer,mzRXML-method}
-\alias{manufacturer,mzRML-method}
-\alias{model,mzRXML-method}
-\alias{model,mzRML-method}
-\alias{peaksCount,mzR,missing-method}
-\alias{peaksCount,mzR,numeric-method}
-\alias{peaks,mzR,missing-method}
-\alias{peaks,mzR,numeric-method}
-\alias{runInfo,mzR-method}
+\alias{manufacturer,mzRramp-method}
+\alias{model,mzRramp-method}
+\alias{peaksCount,mzRramp,missing-method}
+\alias{peaksCount,mzRramp,numeric-method}
+\alias{peaks,mzRramp,missing-method}
+\alias{peaks,mzRramp,numeric-method}
+\alias{runInfo,mzRramp-method}
 
-\title{Class \code{"mzR"} and sub-classes}
+\title{Class \code{mzR} and sub-classes}
 \description{
-  The class mzR is a wrapper for the ISB random acces parser RAMP.
-  It keeps both the metadata for the run (like fileName, instrument
-  description or ionisation). It also provides access to the actual MS
-  raw data, such as the peaks.
+  The class \code{mzR} is the main class for the common mass spectrometry
+  formats. It is a virtual class and can thus not be instanciated
+  directly.
 
-  \code{"mzRData"}, \code{"mzRXML"}, \code{"mzRXML"} are format specific
-  sub-classes that extend \code{"mzR"}. Currently, they do not add new
-  splots. Although the API is kept consistent across the sub-classes,
-  some accessor methods are defined specifically for some of them and
-  other methods have sub-class specific implementations.
+  The sub-classes implement specific APIs to access the underlying data
+  and metadata in the files. Currently, \code{mzRramp} is the only
+  available implementation. It uses the ISB 'Ramp' random access C/C++
+  API to access the relevant information in \code{mzData}, \code{mzXML}
+  and \code{mzML} files.
+
+  Additional sub-classes using the proteowizard API and netCDF are
+  planned.
 }
 
 \section{Objects from the Class}{
-  Objects can be created by calls of the form \code{new("mzR", versions,
-    ...)}, but more often they will be created with \code{openMSfile}.
+  \code{mzR} is a virtual class, so instances cannot be created.
+
+  Objects can be created by calls of the form \code{new("mzRramp",
+    ...)}, but more often they will be created with
+  \code{\link{openMSfile}}.  
 }
 
 \section{Slots}{
   \describe{
-    \item{\code{ramp}:}{Object of class \code{"C++Object"}, created with
-      Rcpp.}
-    \item{\code{pwiz}:}{Currently \code{NULL}. Future usage of the
-      proteowizard API will be done through this slot.}
     \item{\code{fileName}:}{Object of class \code{character} storing the
       original filename used when the instance was created. }
+    \item{\code{backend}:}{ One of the implemented backens or
+      \code{NULL}. }
     \item{\code{.__classVersion__}:}{Object of class \code{"Versioned"},
       from Biobase.}
   }
@@ -74,26 +67,32 @@
 }
 
 \section{Methods}{
+  Methods currently implemented for \code{mzR}
   \describe{
-    \item{analyzer}{\code{signature(object = "mzR")}: ... }
-    \item{close}{\code{signature(con = "mzR")}: ... }
-    \item{detector}{\code{signature(object = "mzR")}: ... }
     \item{fileName}{\code{signature(object = "mzR")}: ... }
-    \item{get3Dmap}{\code{signature(object = "mzR")}: ... }
-    \item{header}{\code{signature(object = "mzR", scans = "missing")}: ... }
-    \item{header}{\code{signature(object = "mzR", scans = "numeric")}: ... }
-    \item{initializeRamp}{\code{signature(object = "mzR")}: ... }
-    \item{instrumentInfo}{\code{signature(object = "mzR")}: ... }
-    \item{ionisation}{\code{signature(object = "mzR")}: ... }
-    \item{isInitialized}{\code{signature(object = "mzR")}: ... }
-    \item{length}{\code{signature(x = "mzR")}: ... }
-    \item{manufacturer}{\code{signature(object = "mzR")}: ... }
-    \item{model}{\code{signature(object = "mzR")}: ... }
-    \item{peaksCount}{\code{signature(object = "mzR", scans = "missing")}: ... }
-    \item{peaksCount}{\code{signature(object = "mzR", scans = "numeric")}: ... }
-    \item{peaks}{\code{signature(object = "mzR", scans = "missing")}: ... }
-    \item{peaks}{\code{signature(object = "mzR", scans = "numeric")}: ... }
-    \item{runInfo}{\code{signature(object = "mzR")}: ... }
+  }
+  
+  Methods currentlt implemented for \code{mzRramp}
+  \describe{
+    \item{analyzer}{\code{signature(object = "mzRramp")}: ... }
+    \item{close}{\code{signature(con = "mzRramp")}: ... }
+    \item{detector}{\code{signature(object = "mzRramp")}: ... }
+    \item{fileName}{\code{signature(object = "mzRramp")}: ... }
+    \item{get3Dmap}{\code{signature(object = "mzRramp")}: ... }
+    \item{header}{\code{signature(object = "mzRramp", scans = "missing")}: ... }
+    \item{header}{\code{signature(object = "mzRramp", scans = "numeric")}: ... }
+    \item{initializeRamp}{\code{signature(object = "mzRramp")}: ... }
+    \item{instrumentInfo}{\code{signature(object = "mzRramp")}: ... }
+    \item{ionisation}{\code{signature(object = "mzRramp")}: ... }
+    \item{isInitialized}{\code{signature(object = "mzRramp")}: ... }
+    \item{length}{\code{signature(x = "mzRramp")}: ... }
+    \item{manufacturer}{\code{signature(object = "mzRramp")}: ... }
+    \item{model}{\code{signature(object = "mzRramp")}: ... }
+    \item{peaksCount}{\code{signature(object = "mzRramp", scans = "missing")}: ... }
+    \item{peaksCount}{\code{signature(object = "mzRramp", scans = "numeric")}: ... }
+    \item{peaks}{\code{signature(object = "mzRramp", scans = "missing")}: ... }
+    \item{peaks}{\code{signature(object = "mzRramp", scans = "numeric")}: ... }
+    \item{runInfo}{\code{signature(object = "mzRramp")}: ... }
   }
 }
 
@@ -112,6 +111,7 @@
  file <- list.files(filepath, pattern="MM14.mzML",
                     full.names=TRUE, recursive = TRUE)
   mzml <- openMSfile(file)
+  close(mzml)
 }
 
 \keyword{classes}

@@ -23,5 +23,6 @@ exportMethods(close,
               peaks,
               get3Dmap)
 
-exportClasses("mzR")
+exportClasses("mzR",
+              "mzRramp")
 

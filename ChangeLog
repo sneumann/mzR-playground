@@ -1,3 +1,7 @@
+2011-06-10  Laurent Gatto  <lg390@cam.ac.uk>
+	* bumped version to 0.5.0
+	* implementing backend design and related changes
+	
 2011-06-09  Laurent Gatto  <lg390@cam.ac.uk>
 	* bumped version to 0.4.4
 	* created format specific classes and methods

@@ -8,7 +8,7 @@
   Create and check mzR objects from an mzXML, mzData or mzML file.
 }
 \usage{
- openMSfile(filename, format=NULL, declaredOnly = TRUE, verbose = FALSE)
+ openMSfile(filename, backend="Ramp", declaredOnly = TRUE, verbose = FALSE)
 
  initializeRamp(object, filename, declaredOnly = TRUE)
 
@@ -20,15 +20,15 @@
 \arguments{
   \item{filename}{ Path name of the mzData, mzXML or mzML file to
     read. }
-  \item{format}{ Optional \code{character} specifying the
-    \code{filename} format. If \code{NULL} (default value), the format
-    is guessed using the \code{filename} extension. If provided, must be
-    one of "mzData", "mzXML" or "mzXML". }
+  \item{backend}{ A \code{character} specifiying with backend API to
+    use. Currently only 'Ramp' is available. 'netCDF' and 'pwiz' will be
+    added in future version. }
   \item{declaredOnly}{ Suppresses RAMP's behavior of creating sparse
     tables to accomodate unlisted scans. }  
   \item{object}{ An instantiated mzR object. }
   \item{verbose}{ Enable verbose output. }
 }
+
 \description{
   The \code{openMSfile} constructor will create a new format-specifc
   \code{mzR} object, open 'filename' file and all header information is

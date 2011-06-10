@@ -11,7 +11,7 @@ test.mzXML <- function() {
     file <- list.files(cdfpath, pattern="threonine_i2_e35_pH_tree.mzXML",
                        full.names=TRUE, recursive = TRUE)
     mzxml <- openMSfile(file)
-    checkTrue(class(mzxml)=="mzRXML")
+    checkTrue(class(mzxml)=="mzRramp")
     show(mzxml)
     length(mzxml)
     runInfo(mzxml)
@@ -33,7 +33,7 @@ test.mzML <- function() {
     file <- list.files(cdfpath, pattern="MM14.mzML",
                        full.names=TRUE, recursive = TRUE)
     mzml <- openMSfile(file)
-    checkTrue(class(mzml)=="mzRML")
+    checkTrue(class(mzml)=="mzRramp")
     show(mzml)
     length(mzml)
     runInfo(mzml)
@@ -55,11 +55,11 @@ test.mzData <- function() {
     file <- list.files(cdfpath, pattern="MM14.mzdata",
                        full.names=TRUE, recursive = TRUE)
     mzdata <- openMSfile(file)
-    checkTrue(class(mzdata)=="mzRData")
+    checkTrue(class(mzdata)=="mzRramp")
     show(mzdata)
     length(mzdata)
     runInfo(mzdata)
-    checkException(instrumentInfo(mzdata))
+    checkTrue(all(instrumentInfo(mzdata)==""))
     mzR::peaks(mzdata)
     mzR::peaks(mzdata,1)
     mzR::peaks(mzdata,2:3)

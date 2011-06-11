@@ -54,12 +54,18 @@ Most importantly, access to the data should be fast and memory efficient. This i
 allowing random file access, i.e. retrieving specific data of interest without having to sequentially browser 
 the full content. 
 
+The actual work of reading and parsing the data files is handled by
+the included C/C++ libraries. The RAMP parser, written at the
+Institute for Systems Biology (ISB) is a fast and lightweight parser
+in pure C. Later, it gained support for the mzData format.
 
-\begin{itemize}
-  \item Proteowizard and Ramp, fast random access
-  \item Rcpp 
-\end{itemize}
+The C++ reference implementation for the mzML is the proteowizard
+library (pwiz in short), which in turn makes use of the boost C++
+library. RAMP is able to access mzML files by calling pwiz methods.
 
+The mzR package is in essence a collection of wrappers to the C++
+code, and benefits from the C++ interface provided through the Rcpp
+package.
 
 \section{Example}
 
@@ -96,10 +102,12 @@ close(aa)
 
 \section{Future plans}
 
-\begin{itemize}
-\item pwiz's metadata
-\item mzIdentML
-\end{itemize}
+Right on the heels of the initial release supporting little metadata
+beyond e.g. the instrument model is access to the full pwiz
+functionality to access the full metadata stored in an mzML file, or
+the chromatograms which store e.g. MRM data. Other file formats
+supported by pwiz, such as mzIdentML to store protein identification
+results are also possible in the future. 
 
 \section{Session information}\label{sec:sessionInfo} 
 

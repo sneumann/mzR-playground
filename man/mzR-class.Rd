@@ -31,12 +31,12 @@
 \title{Class \code{mzR} and sub-classes}
 \description{
   The class \code{mzR} is the main class for the common mass spectrometry
-  formats. It is a virtual class and can thus not be instanciated
+  formats. It is a virtual class and thus not supposed to be instanciated
   directly.
 
   The sub-classes implement specific APIs to access the underlying data
   and metadata in the files. Currently, \code{mzRramp} is the only
-  available implementation. It uses the ISB 'Ramp' random access C/C++
+  available implementation. It uses the ISB 'RAMP' random access C/C++
   API to access the relevant information in \code{mzData}, \code{mzXML}
   and \code{mzML} files.
 
@@ -72,7 +72,7 @@
     \item{fileName}{\code{signature(object = "mzR")}: ... }
   }
   
-  Methods currentlt implemented for \code{mzRramp}
+  Methods currently implemented for \code{mzRramp}
   \describe{
     \item{analyzer}{\code{signature(object = "mzRramp")}: ... }
     \item{close}{\code{signature(con = "mzRramp")}: ... }

@@ -26,13 +26,13 @@ model(object)
 \description{
   Accessors to the analytical setup metadata of a run.
   \code{runInfo} will show a summary, whereas all other functions
-  return a single pieve of information. 
+  return a single piece of information. 
 }
 
 
 \seealso{
-  \code{\link{peaks}} for data access and the \code{"\linkS4class{mzR}"}
-  class.
+    \code{\link{spectrum}} to access the metadata for the spectra in a
+  \code{"\linkS4class{mzR}"} class.  
 }
 
 \examples{

@@ -1,5 +1,6 @@
 \name{peaks}
 \alias{header}
+\alias{spectrum}
 \alias{peaks}
 \alias{peaksCount}
 \alias{get3Dmap}

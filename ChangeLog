@@ -1,3 +1,8 @@
+2011-06-16  Laurent Gatto  <lg390@cam.ac.uk>
+	* updated header("mzRamp","numeric") when 
+	length(numeric) > 1 to return 'flat' data.frame
+	* bumped verison to 0.5.1
+	
 2011-06-10  Laurent Gatto  <lg390@cam.ac.uk>
 	* bumped version to 0.5.0
 	* implementing backend design and related changes

@@ -61,7 +61,7 @@ setMethod("header",
             if (length(scans)==1) {
               return(object@backend$getScanHeaderInfo(scans))
             } else {
-              return(data.frame(t(sapply(scans,function(x) object@backend$getScanHeaderInfo(x)))))
+              return(data.frame(t(sapply(scans,function(x) unlist(object@backend$getScanHeaderInfo(x))))))
             }
           })
 

@@ -5,10 +5,10 @@ setMethod("get3Dmap",
 
 setMethod("initializeRamp",
           signature="mzRramp",
-          function(object,filename,declaredOnly = TRUE) {
+          function(object) {
             if (!file.exists(filename))
               stop("File ",filename," not found.\n")
-            object@backend$open(filename, declaredOnly = declaredOnly)
+            object@backend$open(filename)
             if (isInitialized(object)) invisible(TRUE)
             else stop("Could not initialize ramp slot.")
           })

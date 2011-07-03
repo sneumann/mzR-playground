@@ -9,7 +9,7 @@ setGeneric("detector", function(object) standardGeneric("detector"))
 setGeneric("isInitialized", function(object) standardGeneric("isInitialized"))
 setGeneric("initializeRamp",
            signature=c("object"),
-           function(object,filename,declaredOnly = TRUE) standardGeneric("initializeRamp"))
+           function(object,filename) standardGeneric("initializeRamp"))
 setGeneric("header", function(object,scans,...) standardGeneric("header"))
 setGeneric("peaks", function(object,scans,...) standardGeneric("peaks"))
 setGeneric("peaksCount", function(object,scans,...) standardGeneric("peaksCount"))

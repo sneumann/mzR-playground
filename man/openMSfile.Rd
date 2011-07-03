@@ -8,9 +8,9 @@
   Create and check mzR objects from an mzXML, mzData or mzML file.
 }
 \usage{
- openMSfile(filename, backend="Ramp", declaredOnly = TRUE, verbose = FALSE)
+ openMSfile(filename, backend="Ramp", verbose = FALSE)
 
- initializeRamp(object, filename, declaredOnly = TRUE)
+ initializeRamp(object, filename)
 
  isInitialized(object)
 
@@ -23,8 +23,6 @@
   \item{backend}{ A \code{character} specifiying with backend API to
     use. Currently only 'Ramp' is available. 'netCDF' and 'pwiz' will be
     added in future version. }
-  \item{declaredOnly}{ Suppresses RAMP's behavior of creating sparse
-    tables to accomodate unlisted scans. }  
   \item{object}{ An instantiated mzR object. }
   \item{verbose}{ Enable verbose output. }
 }

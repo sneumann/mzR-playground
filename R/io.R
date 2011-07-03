@@ -1,6 +1,5 @@
 openMSfile <- function(filename,
                        backend="Ramp",
-                       declaredOnly = TRUE,
                        verbose = FALSE) {
   if (!file.exists(filename))
     stop("File ",filename," not found.\n")
@@ -9,7 +8,7 @@ openMSfile <- function(filename,
     stop("Currently only 'Ramp' supported.")
   ## Currently, only Ramp is available
   rampModule <- new( Ramp ) 
-  rampModule$open(filename, declaredOnly = declaredOnly)
+  rampModule$open(filename)
   if (!rampModule$OK()) {
     stop("Unable to create valid cRamp object.")
   }

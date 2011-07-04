@@ -45,17 +45,19 @@
 
 \section{Introduction}
 
-The \Rpackage{mzR} package aims at providing a common interface to several mass spectrometry data formats: 
-\texttt{mzData} \citep{Orchard2007}, 
-\texttt{mzXML} \citep{Pedrioli2004} and the latest 
-\texttt{mzML} \citep{Martens2010}. 
+The \Rpackage{mzR} package aims at providing a common interface to
+several mass spectrometry data formats: \texttt{mzData}
+\citep{Orchard2007}, \texttt{mzXML} \citep{Pedrioli2004} and the
+latest \texttt{mzML} \citep{Martens2010}, somewhat similar to the
+Bioconductor package affyio for affymetrix raw data. No processing is
+done in mzR, which is left to packages such as XCMS. 
 
 Most importantly, access to the data should be fast and memory efficient. This is made possible by 
 allowing random file access, i.e. retrieving specific data of interest without having to sequentially browser 
 the full content. 
 
 The actual work of reading and parsing the data files is handled by
-the included C/C++ libraries. The RAMP parser, written at the
+the included C/C++ libraries or ``backends''. The RAMP parser, written at the
 Institute for Systems Biology (ISB) is a fast and lightweight parser
 in pure C. Later, it gained support for the mzData format.
 
@@ -65,7 +67,35 @@ library. RAMP is able to access mzML files by calling pwiz methods.
 
 The mzR package is in essence a collection of wrappers to the C++
 code, and benefits from the C++ interface provided through the Rcpp
-package.
+package. Where possible mzR selects the appropriate backend for the 
+requested file type. If several backends provide access, the user can 
+specify a backend different than the default.
+
+\section{Mass spectrometry raw data}
+
+All the mass spectrometry mz file formats are organised similarly,
+where a set of metadata nodes about the run is followed by a list of
+spectra with the actual masses and intensities. In addition, each of
+these spectra has its own set of metadata, such as the retention time
+and acquisition parameters.
+
+\subsection{Spectral data access}
+
+Access to the spectral data is done via the peaks function. 
+The return value is a list of two-column mass- and intensity matrices.
+
+\subsection{Metadata access}
+
+\paragraph{Run meta data} is available via several functions such as
+instrumentInfo() or runInfo(). The individual fields can be accessed
+via e.g. detector() etc.
+
+\paragraph{Spectrum meta data} is available via header(), which will
+return a matrix with information such as the basePeakMZ, a peaksCount
+or for higher-order MS the msLevel and precursor information.
+
+The availability of this metadata can not always be guaranteed, and
+depends on the MS software which converted the data to e.g. mzXML.
 
 \section{Example}
 

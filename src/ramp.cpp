@@ -49,7 +49,8 @@ and gzipped versions of all of these if you have pwiz
 #include "./pwiz/utility/misc/random_access_compressed_ifstream.hpp"  // for reading mzxml.gz
 #endif
 #ifdef WINDOWS_NATIVE
-#include "common/wglob.h"		//glob for windows
+#include "./pwiz/data/msdata/ramp/wglob.h"
+//#include "common/wglob.h"		//glob for windows
 #else
 #include <glob.h>		//glob for real
 #endif

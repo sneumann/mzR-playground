@@ -6,6 +6,7 @@
 \alias{manufacturer}
 \alias{model}
 \alias{runInfo}
+\alias{fileName}
 
 \title{
   Access the metadata from an \code{mzR} object.
@@ -19,6 +20,7 @@ instrumentInfo(object)
 ionisation(object)
 manufacturer(object)
 model(object)
+fileName(object)
 }
 \arguments{
   \item{object}{An instantiated \code{mzR} object.}
@@ -33,6 +35,8 @@ model(object)
   instrument manufacturer, model, ionisation technique, analyzer and
   detector. These individual pieces of information can also be directly
   accessed by the specific methods.
+  \code{fileName} returns the full path and file name of the current
+  \code{mzR} instance.
 }
 
 

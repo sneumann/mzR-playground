@@ -31,6 +31,8 @@ setMethod("peaks",
           signature=c("mzRramp","missing"),
           function(object) {
             n <- length(object)
+            if (n==1)
+              return(list(peaks(object,1:n))) ## full experiments are always returned as lists
             return(peaks(object,1:n))
           })
 

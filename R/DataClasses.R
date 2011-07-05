@@ -57,7 +57,7 @@ setClass("mzRpwiz",
          )
 
 ##############################################################
-## mzRpwiz - netCDF backend 
+## mzRnetCDF - netCDF backend 
 setClass("mzRnetCDF",
          representation(backend="NULL"),
          contains=c("mzR"),

@@ -31,14 +31,29 @@
 }
 
 \description{
-  Access the MS raw data. The \code{\link{runInfo}} function returns a
-  list containing \code{scanCount}, \code{lowMZ} and \code{highMZ}, 
-  \code{startMZ} and \code{endMZ} and the \code{dStartTime} and
-  \code{dEndTime}. 
+  Access the MS raw data. The \code{peaks} and \code{peaksCount}
+  functions return the (m/z,intensity) pairs and the number peaks in the
+  spectrum/spectra. \code{peaks} returns a single matrix if scans is a
+  \code{numeric} of length 1 and a list of matrices
+  otherwise. \code{peaksCount} will return a numeric of length
+  \code{n}.
   
-  Each scan has a header, which contains for scan-specific metadata.
+  The \code{\link{header}} function returns a list containing
+ \code{seqNum}, \code{acquisitionNum} , \code{msLevel},
+ \code{peaksCount}, \code{totIonCurrent}, \code{retentionTime},
+ \code{basePeakMZ}, \code{basePeakIntensity}, \code{collisionEnergy},
+ \code{ionisationEnergy}, \code{lowM}, \code{highMZ},
+ \code{precursorScanNum}, \code{precursorMZ}, \code{precursorCharge},
+ \code{precursorIntensity}, \code{mergedScan},
+ \code{mergedResultScanNum}, \code{mergedResultStartScanNum} and 
+ \code{mergedResultEndScanNum}, when available in the original file. If
+ multiple scans are queried, a \code{data.frame} is returned with the
+ scans reported along the rows.
 
-  A simple resampling is performed by the function \code{get3Dmap}. 
+ The \code{get3Dmap} function performs a simple resampling between
+ \code{lowMz} and \code{highMz} with \code{reMz} resolution. A matrix of
+ dimensions \code{length(scans)} times \code{seq(lowMz,highMz,resMz)} is
+ returned. 
 }
 
 \seealso{

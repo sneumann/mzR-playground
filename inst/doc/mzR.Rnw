@@ -35,9 +35,11 @@
 
 \begin{document}
 
-\title{A Parser for mzXML, mzData and mzML files}
+\title{A Parser for \texttt{mzXML}, \texttt{mzData} and \texttt{mzML} files}
 
-\author{Bernd Fischer, Laurent Gatto and Steffen Neumann}
+\author{Bernd Fischer\footnote{\email{bernd.fischer@embl.de}} \\
+  Steffen Neumann\footnote{\email{sneumann@ipb-halle.de}} \\
+  Laurent Gatto\footnote{\email{lg390@cam.ac.uk}}}
 
 \maketitle
 
@@ -46,11 +48,15 @@
 \section{Introduction}
 
 The \Rpackage{mzR} package aims at providing a common interface to
-several mass spectrometry data formats: \texttt{mzData}
+several mass spectrometry data formats, namely \texttt{mzData}
 \citep{Orchard2007}, \texttt{mzXML} \citep{Pedrioli2004} and the
 latest \texttt{mzML} \citep{Martens2010}, somewhat similar to the
 Bioconductor package affyio for affymetrix raw data. No processing is
-done in mzR, which is left to packages such as XCMS. 
+done in mzR, which is left to packages such as 
+\Rpackage{XCMS}\footnote{\url{http://www.bioconductor.org/packages/release/bioc/html/xcms.html}} 
+or \Rpackage{MSnbase}\footnote{\url{http://www.bioconductor.org/packages/release/bioc/html/MSnbase.html}}.
+
+\bigskip
 
 Most importantly, access to the data should be fast and memory efficient. This is made possible by 
 allowing random file access, i.e. retrieving specific data of interest without having to sequentially browser 
@@ -59,21 +65,24 @@ the full content.
 The actual work of reading and parsing the data files is handled by
 the included C/C++ libraries or ``backends''. The RAMP parser, written at the
 Institute for Systems Biology (ISB) is a fast and lightweight parser
-in pure C. Later, it gained support for the mzData format.
+in pure C. Later, it gained support for the \texttt{mzData} format.
 
-The C++ reference implementation for the mzML is the proteowizard
-library (pwiz in short), which in turn makes use of the boost C++
-library. RAMP is able to access mzML files by calling pwiz methods.
+The C++ reference implementation for the \texttt{mzML} is the proteowizard
+library \citep{Kessner08} (pwiz in short), which in turn makes use of the boost C++ 
+(\url{http://www.boost.org/}) library. 
+RAMP is able to access \texttt{mzML} files by calling pwiz methods.
 
-The mzR package is in essence a collection of wrappers to the C++
+\bigskip
+
+The \Rpackage{mzR} package is in essence a collection of wrappers to the C++
 code, and benefits from the C++ interface provided through the Rcpp
-package. Where possible mzR selects the appropriate backend for the 
+package \citep{Rcpp11}. Where possible \Rpackage{mzR} selects the appropriate backend for the 
 requested file type. If several backends provide access, the user can 
 specify a backend different than the default.
 
 \section{Mass spectrometry raw data}
 
-All the mass spectrometry mz file formats are organised similarly,
+All the mass spectrometry file formats are organised similarly,
 where a set of metadata nodes about the run is followed by a list of
 spectra with the actual masses and intensities. In addition, each of
 these spectra has its own set of metadata, such as the retention time
@@ -82,24 +91,27 @@ and acquisition parameters.
 \subsection{Spectral data access}
 
 Access to the spectral data is done via the peaks function. 
-The return value is a list of two-column mass- and intensity matrices.
+The return value is a list of two-column mass-to-charge and intensity 
+matrices or a single matrix if one spectrum is queried.
 
 \subsection{Metadata access}
 
-\paragraph{Run meta data} is available via several functions such as
-instrumentInfo() or runInfo(). The individual fields can be accessed
+\paragraph{Run metadata} is available via several functions such as
+\texttt{instrumentInfo()} or \texttt{runInfo()}. The individual fields can be accessed
 via e.g. detector() etc.
 
-\paragraph{Spectrum meta data} is available via header(), which will
-return a matrix with information such as the basePeakMZ, a peaksCount
-or for higher-order MS the msLevel and precursor information.
+\paragraph{Spectrum metadata} is available via \texttt{header()}, which will
+return a list (for single scans) or a dataframe with information such as the 
+\texttt{basePeakMZ}, \texttt{peaksCount}, \ldots or, for higher-order MS 
+the \texttt{msLevel} and precursor information.
 
 The availability of this metadata can not always be guaranteed, and
-depends on the MS software which converted the data to e.g. mzXML.
+depends on the MS software which converted the data.
 
 \section{Example}
 
-A short example sequence to read data from a mass spectrometer. First open the file.
+A short example sequence to read data from a mass spectrometer. 
+First open the file.
 
 <<open the file>>=
 library(mzR)
@@ -125,7 +137,7 @@ head(pl)
 plot(pl[,1], pl[,2], type="h", lwd=1)
 @ 
 
-You should close the file when not needed any more. This will release the memory of cached content.
+One should always close the file when not needed any more. This will release the memory of cached content.
 <<close the file>>=
 close(aa)
 @ 
@@ -133,10 +145,10 @@ close(aa)
 \section{Future plans}
 
 Right on the heels of the initial release supporting little metadata
-beyond e.g. the instrument model is access to the full pwiz
-functionality to access the full metadata stored in an mzML file, or
-the chromatograms which store e.g. MRM data. Other file formats
-supported by pwiz, such as mzIdentML to store protein identification
+beyond e.g. the instrument model, is access to the full pwiz
+functionality to access the full metadata stored in an \texttt{mzML} file, 
+or the chromatograms (which store e.g. MRM data). Other file formats
+supported by pwiz, such as \texttt{mzIdentML} for protein identification
 results are also possible in the future. 
 
 \section{Session information}\label{sec:sessionInfo} 

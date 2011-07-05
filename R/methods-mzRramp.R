@@ -23,7 +23,7 @@ setMethod("peaks",
             if (length(scans)==1) {
               return(object@backend$getPeakList(scans)$peaks)
             } else {
-              return(sapply(scans,function(x) object@backend$getPeakList(x)$peaks))
+              return(sapply(scans,function(x) object@backend$getPeakList(x)$peaks), simplify = FALSE)
             }
           })
 

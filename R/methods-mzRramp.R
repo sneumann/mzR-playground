@@ -8,7 +8,7 @@ setMethod("initializeRamp",
           function(object) {
             if (!file.exists(filename))
               stop("File ",filename," not found.\n")
-            object@backend$open(filename)
+            object@backend$open(filename, declaredOnly = TRUE)
             if (isInitialized(object)) invisible(TRUE)
             else stop("Could not initialize ramp slot.")
           })
@@ -23,7 +23,7 @@ setMethod("peaks",
             if (length(scans)==1) {
               return(object@backend$getPeakList(scans)$peaks)
             } else {
-              return(sapply(scans,function(x) object@backend$getPeakList(x)$peaks), simplify = FALSE)
+              return(sapply(scans,function(x) object@backend$getPeakList(x)$peaks, simplify = FALSE))
             }
           })
 

@@ -1,4 +1,5 @@
 src/mzR.so
+src/mzR.dll
 *.o
 *~
 .svn

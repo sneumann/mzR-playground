@@ -6,9 +6,9 @@ setMethod("get3Dmap",
 setMethod("initializeRamp",
           signature="mzRramp",
           function(object) {
-            if (!file.exists(filename))
-              stop("File ",filename," not found.\n")
-            object@backend$open(filename, declaredOnly = TRUE)
+            if (!file.exists(fileName(object)))
+              stop("File ", fileName(object), " not found.\n")
+            object@backend$open(fileName(object), declaredOnly = TRUE)
             if (isInitialized(object)) invisible(TRUE)
             else stop("Could not initialize ramp slot.")
           })
@@ -127,7 +127,7 @@ setMethod("show",
           function(object) {
             if (!isInitialized(object)) {
               cat("Your object's ramp slot is not initialized.\n")
-              cat("Use initializeRamp(object,filename) to fix this.\n")
+              cat("Use initializeRamp(object) to fix this.\n")
             } else {
               filename <- fileName(object)
               info <- instrumentInfo(object)

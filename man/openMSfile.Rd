@@ -10,7 +10,7 @@
 \usage{
  openMSfile(filename, backend="Ramp", verbose = FALSE)
 
- initializeRamp(object, filename)
+ initializeRamp(object)
 
  isInitialized(object)
 

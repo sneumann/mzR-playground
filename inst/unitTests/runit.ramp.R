@@ -27,19 +27,6 @@ test.mzXML <- function() {
     close(mzxml)
 }
 
-#test.initializeRamp <- function() {
-#    library(msdata)
-#    cdfpath <- system.file("microtofq", package = "msdata")
-#    file <- list.files(cdfpath, pattern="MM14.mzML",
-#                       full.names=TRUE, recursive = TRUE)
-#    mz <- new("mzRramp", fileName=file)
-#    mz <- initializeRamp(mz)
-#    show(mzxml)
-#
-#    close(mzml)
-#}
-
-
 test.mzML <- function() {
     library(msdata)
     cdfpath <- system.file("microtofq", package = "msdata")

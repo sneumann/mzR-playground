@@ -7,7 +7,7 @@ setMethod("initializeRamp",
           signature="mzRramp",
           function(object) {
             if (!file.exists(fileName(object)))
-              stop("File ", fileName(object), " not found.\n")
+              stop("File ",fileName(object)," not found.\n")
             object@backend$open(fileName(object), declaredOnly = TRUE)
             if (isInitialized(object)) invisible(TRUE)
             else stop("Could not initialize ramp slot.")

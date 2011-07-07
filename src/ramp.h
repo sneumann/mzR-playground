@@ -55,7 +55,7 @@ and mzML, if you have the PWIZ library from Spielberg Family Proteomics Center
 #endif
 
 #ifdef WINDOWS_NATIVE // MSVC or MinGW
-#include <winsock2.h>
+//#include <winsock2.h>
 #include <sys/types.h>
 #include <fcntl.h>
 #include <io.h>

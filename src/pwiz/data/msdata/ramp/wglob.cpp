@@ -35,7 +35,7 @@ nate.heinecke@insilicos.com
 
 */
 
-#ifdef WINDOWS_NATIVE // MSVC or MinGW
+#if defined(_MSC_VER) || defined(__MINGW32__) || defined(WINDOWS_NATIVE) // MSVC or MinGW
 #include <windows.h>
 #include <stdio.h>
 #include <iostream>

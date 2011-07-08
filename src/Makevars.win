@@ -73,7 +73,7 @@ MZROBJECTS=cramp.o  ramp_base64.o  ramp.o  RcppRamp.o RcppRampModule.o
 OBJECTS= $(MZROBJECTS) $(PWIZOBJECTS) 
 
 PWIZ_LDFLAGS=
-PWIZ_CPPFLAGS=-I./boost_aux/ -I. # -DWINDOWS_NATIVE
+PWIZ_CPPFLAGS=-I./boost_aux/ -I. -I. -DHAVE_PWIZ_MZML_LIB # -DWINDOWS_NATIVE
 
 ## Use the R_HOME indirection to support installations of multiple R version
 PKG_CPPFLAGS=-D_LARGEFILE_SOURCE $(PWIZ_CPPFLAGS)

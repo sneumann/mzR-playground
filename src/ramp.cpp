@@ -60,7 +60,7 @@ and gzipped versions of all of these if you have pwiz
 #else
 // local copies of stuff in TPP's sysdepend.h, and empty macro versions of some stuff as well
 #if defined(_MSC_VER) || defined(__MINGW32__)
-#ifdef __MINGW32__
+#ifndef __MINGW64__
 typedef unsigned long uint32_t; 
 typedef unsigned __int64 uint64_t;
 #endif

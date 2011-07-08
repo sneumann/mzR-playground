@@ -1,3 +1,7 @@
+2011-07-08 Steffen Neumann <sneumann@ipb-halle.de>
+	* fixed Windows, checked for x64
+	* bumped version to 0.5.4
+	
 2011-07-05 Laurent Gatto <lg390@cam.ac.uk>
 	* small doc and vignette updates
 	* peaks("mzRramp","missing") always returns a list 

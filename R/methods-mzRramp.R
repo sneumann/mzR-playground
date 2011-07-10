@@ -77,7 +77,18 @@ setMethod("isInitialized",
 
 setMethod("runInfo",
           signature="mzRramp",
-          function(object) return(object@backend$getRunInfo()))
+          function(object) {
+            ##return(object@backend$getRunInfo())
+            hd <- header(object)
+            ll <- list()
+            ll$'scanCount' <- length(object)
+            ll$'lowMz' <- min(hd$lowMZ)
+            ll$'highMz' <- max(hd$highMZ)
+            ll$'dStartTime' <- min(hd$retentionTime)
+            ll$'dEndTime' <- max(hd$retentionTime)
+            ll$'msLevels' <- unique(hd$msLevel)
+            return(ll)
+          })
 
 
 setMethod("instrumentInfo",
@@ -130,21 +141,22 @@ setMethod("show",
               cat("Use initializeRamp(object) to fix this.\n")
             } else {
               filename <- fileName(object)
-              info <- instrumentInfo(object)
-              run <- runInfo(object)
+              ## info <- instrumentInfo(object)
+              ## run  <- runInfo(object)
               cat("Mass Spectrometry file handle.\n")
-              cat("Filename:     ", filename, "\n")
-              if (any(info != "")) {
-                cat("Manufacturer: ", info$manufacturer, "\n")
-                cat("Model:        ", info$model, "\n")
-                cat("Ionisation:   ", info$ionisation, "\n")
-                cat("Analyzer:     ", info$analyzer, "\n")
-                cat("Detector:     ", info$detector, "\n")
-              }
-              cat("number scans: ", run$scanCount, "\n")
-              cat("lowMZ:        ", run$lowMZ, " \thighMZ: ", run$highMZ, "\n")
-              cat("startMZ:      ", run$lowMZ, " \tendMZ: ",  run$highMZ, "\n")
-              cat("dStartTime:   ", run$dStartTime, " \tdEndTime: ", run$dEndTime, "\n")
+              cat("Filename: ", filename, "\n")
+              cat("Number of scans: ", length(object), "\n")
+              ## if (any(info != "")) {
+              ##   cat("Manufacturer: ", info$manufacturer, "\n")
+              ##   cat("Model:        ", info$model, "\n")
+              ##   cat("Ionisation:   ", info$ionisation, "\n")
+              ##   cat("Analyzer:     ", info$analyzer, "\n")
+              ##   cat("Detector:     ", info$detector, "\n")
+              ## }
+              ## cat("Number of scans: ", run$scanCount, "\n")
+              ## cat("lowMZ:        ", run$lowMZ, " \thighMZ: ", run$highMZ, "\n")
+              ## cat("startMZ:      ", run$startMZ, " \tendMZ: ",  run$endMZ, "\n")
+              ## cat("dStartTime:   ", run$dStartTime, " \tdEndTime: ", run$dEndTime, "\n")
             }
             invisible(NULL)
           })

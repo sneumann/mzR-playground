@@ -1,3 +1,9 @@
+2011-07-11 Laurent Gatto <lg390@cam.ac.uk>
+	* simplified show method
+	* rewrote runInfo in R
+	* Misc changes in doc and vignette
+	* bumped version to 0.5.5
+	
 2011-07-08 Steffen Neumann <sneumann@ipb-halle.de>
 	* fixed Windows, checked for x64
 	* bumped version to 0.5.4

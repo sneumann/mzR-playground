@@ -101,7 +101,7 @@ with its own manpage.
 > 
 >     If the man page cannot contain a full explanation of those terms, maybe
 >     at least it should provide some reference to a document describing them.
-Halfway done.
+Done.
  
 > 12. One more problem with man/Ramp-class.Rd: the get3DMap method doesn't
 >     seem to exist:
@@ -120,7 +120,7 @@ LG - all these methods that were called through the Rcpp module are now
 >     of the classes that are used here (and the special syntax used to call
 >     their methods). Providing some background information about the very
 >     special nature of those classes/methods would be more than welcome.
-Halfway done.
+Done.
 
  
 > 14. The .onLoad hook contains a setMethod() statement. This is the only

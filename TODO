@@ -1,27 +1,24 @@
+Hi,
+
+after beeing busy in the past weeks, we have now 
+overhauled most of the package. To me the most important 
+change is the possibility to have multiple backends, 
+such as netCDF, Ramp and pwiz to do the actual I/O work.
+
+We also have a patch for XCMS to do the I/O work 
+through mzR, and Laurent also has patches to msnbase 
+to switch to mzR. Both will be applied to BioC SVN
+if we have a few weeks of debugging before the release.
+
+Could you guys please add the Roundup user "lgatto" 
+to the nosy list of this issue ? Thanks in advance.
+
+Yours,
+Steffen
+
 On Mon, 2011-03-07 at 22:27 +0000, herve BioC-Submit wrote:
 herve <hpages@fhcrc.org> added the comment:
-> 
-> Hi Steffen, Bernd,
-> 
-> Thanks for submitting the mzR package!
-> 
-> Given the information you provided us about the various licenses used
-> in mzR, and after we did a quick research on our side, there doesn't
-> seem to be any obvious incompatibilities. But of course we are not software
-> licensing experts or lawyers and it is ultimately your responsibility to
-> double-check for any potential issue.
-> 
-> mzR is taking advantage of the powerful Rcpp package to provide an R
-> frontend for C++ code written by other people. This is a great approach,
-> and, honnestly, I didn't realize before reviewing mzR that you could use
-> Rcpp in that way (I never used Rcpp). It's great to be able to use a C++
-> class and its methods at the R level. At the same time, because this is
-> something most users have probably never seen before, it's important that
-> the documentation in the mzR package is very clear about what's going on
-> exactly. More on this in the detailed review below.
-
-
-
+...
 > Detailed review:
 > 
 > 1. Please use a BioC-style version number i.e. x.y.z
@@ -49,11 +46,9 @@ Done.
 >    this. (Do you want Rcpp to end up in the search path of the user when
 >    s/he does library(mzR)? Are there symbols or man pages defined in Rcpp
 >    that the end-user of the mzR package might need to access directly?)
-Removed for the time.
-
-LG - I have placed Rcpp in the dependency (v 0.5.0) and removed import(Rcpp)
-     from the NAMESPACE file, to supress a warning about missing '"C++Object"
-     unavailable and created in local env' when loading the package.
+I have placed Rcpp in the dependency (v 0.5.0) and removed import(Rcpp)
+from the NAMESPACE file, to supress a warning about missing '"C++Object"
+unavailable and created in local env' when loading the package.
  
 > 6. msdata needs to be put in the Suggests field: it's used in the vignette
 >    and the unit tests.
@@ -73,9 +68,8 @@ I guess it'll be cleaner now.
 > 
 >    Will the user really create object like this? If yes, then please provide
 >    an example on the \examples{} section of the man page.
-
-LG - There is now a proper constructor (openMSfile, see below) that will read 
-     an mass spec file, initialise the Rcpp module and return a proper S4 class.
+There is now a proper constructor (openMSfile, see below) that will read 
+an mass spec file, initialise the Rcpp module and return a proper S4 class.
  
 > 10. The rampOpenFile() function itself (which is more likely to be *the* way
 >     people will create Ramp objects) is not documented. In particular, the
@@ -102,6 +96,7 @@ with its own manpage.
 >     If the man page cannot contain a full explanation of those terms, maybe
 >     at least it should provide some reference to a document describing them.
 Done.
+
  
 > 12. One more problem with man/Ramp-class.Rd: the get3DMap method doesn't
 >     seem to exist:
@@ -111,9 +106,9 @@ Done.
 > 
 >     But maybe this is just a documentation problem: according to the man
 >     page, it takes only 1 argument, when, in fact, 4 args seem to be required.
+all these methods that were called through the Rcpp module are now 
+encapsulated in S4 methods, all of which are documented.
 
-LG - all these methods that were called through the Rcpp module are now 
-     encapsulated in S4 methods, all of which are documented.
 
 > 13. The vignette too is insufficient. It doesn't provide any context, and,
 >     in particular, it doesn't provide any explanation about the special nature
@@ -129,7 +124,6 @@ Done.
 >     import(methods) in the NAMESPACE file (generally right after the
 >     useDynLib directive).
 Done.
-
  
 > 15. I get the 2 following warnings when running 'R CMD check mzR_0.4.tar.gz':
 > 
@@ -148,9 +142,9 @@ and it is also used throughout the boost libraries,
 which is a high quality C++ project, some of which 
 will go into the next C++ standards. 
 
-So compaints about *.hpp is definitely a false positive.
+So complaints about *.hpp is definitely a false positive.
 
-LG - have changed src/*hpp to src/*h for now.   
+Nevertheless we have changed src/*hpp to src/*h for now.   
 
 >     probably something you want to complain about on the R-devel mailing list,
 Will do.
@@ -172,6 +166,5 @@ Will do.
 > 
 >     probably something that will go away by importing the methods package (as
 >     mentioned previously).
-
 Done. Rcpp stuff has been overhauled by Laurent.
 

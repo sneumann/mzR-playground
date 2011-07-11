@@ -76,9 +76,11 @@ RAMP is able to access \texttt{mzML} files by calling pwiz methods.
 
 The \Rpackage{mzR} package is in essence a collection of wrappers to the C++
 code, and benefits from the C++ interface provided through the Rcpp
-package \citep{Rcpp11}. Where possible \Rpackage{mzR} selects the appropriate backend for the 
-requested file type. If several backends provide access, the user can 
-specify a backend different than the default.
+package \citep{Rcpp11}. 
+%% Let's not mention this yet, as only one backend is available.
+%% Where possible \Rpackage{mzR} selects the appropriate backend for the 
+%% requested file type. If several backends provide access, the user can 
+%% specify a backend different than the default.
 
 \section{Mass spectrometry raw data}
 
@@ -104,6 +106,8 @@ via e.g. detector() etc.
 return a list (for single scans) or a dataframe with information such as the 
 \texttt{basePeakMZ}, \texttt{peaksCount}, \ldots or, for higher-order MS 
 the \texttt{msLevel} and precursor information.
+
+\bigskip
 
 The availability of this metadata can not always be guaranteed, and
 depends on the MS software which converted the data.
@@ -144,9 +148,10 @@ close(aa)
 
 \section{Future plans}
 
-Right on the heels of the initial release supporting little metadata
-beyond e.g. the instrument model, is access to the full pwiz
-functionality to access the full metadata stored in an \texttt{mzML} file, 
+Right on the heels of the initial RAMP backend release, 
+supporting little metadata beyond e.g. the instrument model, 
+is support to the full pwiz functionality to access the full metadata 
+stored in an \texttt{mzML} files, 
 or the chromatograms (which store e.g. MRM data). Other file formats
 supported by pwiz, such as \texttt{mzIdentML} for protein identification
 results are also possible in the future. 

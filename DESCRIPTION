@@ -18,7 +18,7 @@ LazyLoad: yes
 Depends: Rcpp (>= 0.10.1), methods, utils
 Imports: Biobase
 Suggests: msdata (>= 0.1.9), RUnit, faahKO
-LinkingTo: Rcpp
+LinkingTo: Rcpp, BH
 RcppModules: Ramp
 SystemRequirements: GNU make, NetCDF, zlib
 biocViews: Infrastructure, Bioinformatics, DataImport, Proteomics, Metabolomics, MassSpectrometry
